@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Description of CartController
+ * Description of BaseController
  *
  * @author Igor Ternyuk <xmonad100 at gmail.com>
  */
-class CartController extends BaseController {
+class BaseController {
+    protected $smarty;
     
     public function __construct($args){
-        parent::__construct($args);
+        $this->smarty = $args['smarty'];
     }
-
 }

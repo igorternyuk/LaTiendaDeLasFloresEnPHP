@@ -1,3 +1,7 @@
+hideme{
+    display: none;
+}
+
 body
 {
 background-color:#c0c0c0;
@@ -259,13 +263,25 @@ ul.list li{
 list-style:none;
 padding:2px 0 2px 0;
 }
+
 ul.list li a{
+font-size: 14px;
 list-style:none;
 text-decoration:none;
 color:#000000;
 background:url(../images/left_menu_bullet.gif) no-repeat left;
 padding:0 0 0 17px;
 }
+
+ul.list li a.sub{
+list-style:none;
+text-decoration:none;
+color:#000000;
+background: none;
+/*background:url(../images/left_menu_bullet.gif)  no-repeat right;*/
+padding:0 0 0 27px;
+}
+
 ul.list li a:hover{
 text-decoration:underline;
 }

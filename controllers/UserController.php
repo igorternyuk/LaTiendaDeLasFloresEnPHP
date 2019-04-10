@@ -5,6 +5,10 @@
  *
  * @author Igor Ternyuk <xmonad100 at gmail.com>
  */
-class UserController {
-    //put your code here
+class UserController extends BaseController {
+    
+    public function __construct($args){
+        parent::__construct($args);
+    }
+
 }

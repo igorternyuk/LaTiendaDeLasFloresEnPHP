@@ -5,6 +5,10 @@
  *
  * @author Igor Ternyuk <xmonad100 at gmail.com>
  */
-class CabinetController {
-    //put your code here
+class CabinetController extends BaseController {
+    
+    public function __construct($args){
+        parent::__construct($args);
+    }
+
 }

@@ -40,10 +40,11 @@ class Paginator {
    public function getHtml(){
        $links = null;
        $limits = $this->limits();
-       $html = '<ul class="pagination" >';
+       $html = '<div class="pagination" >';
        for($page = $limits['start']; $page <= $limits['end']; ++$page){
            if($page == $this->currentPage){
-               $links .= "<li class='active'><a href='#'>" . $page . "</a></li>";
+               //<span class="current">1</span>
+               $links .= "<span class='current'>" . $page . "</span>";
            } else {
                $links .= $this->generateReferenceHtml($page);
            }
@@ -62,7 +63,7 @@ class Paginator {
                $links .= $this->generateReferenceHtml($this->pageTotal, ">>"); 
            }
        }
-       $html .= $links . "</ul>";
+       $html .= $links . "</div>";
        return $html;
    }
    
@@ -93,7 +94,7 @@ class Paginator {
        $currentURI = rtrim($currentURI, '/').'/';       
        $currentURI = preg_replace("~page-[0-9]+/~", '', $currentURI);
        $newUrl = $currentURI . $this->keyOfGet . $page;
-       return "<li><a href='" . $newUrl. "'>" . $label . "</a></li>";
+       return "<a href='" . $newUrl. "'>" . $label . "</a>";
    }
 
 }

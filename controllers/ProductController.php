@@ -1,14 +1,17 @@
 <?php
 
 /**
- * Description of CartController
+ * Description of ProductController
  *
  * @author Igor Ternyuk <xmonad100 at gmail.com>
  */
-class CartController extends BaseController {
+class ProductController extends BaseController {
     
     public function __construct($args){
         parent::__construct($args);
     }
 
+    public function actionView($productId){
+        
+    }
 }
