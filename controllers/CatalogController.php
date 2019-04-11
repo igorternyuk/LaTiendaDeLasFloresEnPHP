@@ -41,12 +41,12 @@ class CatalogController extends BaseController {
 
     public function actionCategory($categoryId, $page = 1, $letter = null){
         parent::loadCommon();
-        
-        $latestProducts = Product::getByCategoryId($categoryId, $page);
+        $this->smarty->assign('currentLetter', $letter);
+        $latestProducts = Product::getByCategoryId($categoryId, $page, $letter);
         foreach ($latestProducts as &$product){
             $product['image'] = Product::getImage($product['id']);
         }
-        
+        //Utils::debug($latestProducts);
         $currentCategory = Category::getById($categoryId);
         $categoryName = $currentCategory['name'];
         if(!Category::checkIfMain($categoryId)){
