@@ -34,10 +34,10 @@
         <div class="title"><span class="title_icon"><img src="{$templateWebPath}images/bullet5.gif" alt="" /></span>Категории</div>
         <ul class="list">
           {foreach $allCategories as $category}
-              <li ><a href="catalog/{$category['id']}">{$category['name']}</a></li>
+              <li ><a href="/catalog/{$category['id']}">{$category['name']}</a></li>
             {if $category['children'] != false }
                 {foreach $category['children'] as $child}
-                <li ><a class="sub" href="catalog/{$child['id']}">{$child['name']}</a></li>
+                <li ><a class="sub" href="/catalog/{$child['id']}">{$child['name']}</a></li>
                 {/foreach}
             {/if}
           {/foreach}

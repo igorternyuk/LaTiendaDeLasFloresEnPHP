@@ -11,23 +11,27 @@ class CatalogController extends BaseController {
         parent::__construct($args);
     }
     
-    public function actionIndex(){
-        $allCategories = Category::getAllMainCategoriesWithChildren();
-        $latestProducts = Product::getLatest();
+    public function actionIndex($page = 1, $letter = null){
+        parent::loadCommon();
+        
+        $this->smarty->assign('currentLetter', $letter);
+        //Utils::debug($page);
+        $latestProducts = Product::getLatest(intval($page), $letter);
+        //Utils::debug($latestProducts);
         foreach ($latestProducts as &$product){
             $product['image'] = Product::getImage($product['id']);
         }
         
-        $productsWithDiscount = Product::getAllWithDiscount();
-        foreach ($productsWithDiscount as &$product){
-            $product['image'] = Product::getImage($product['id']);
-        }
-        //Utils::debug($productsWithDiscount);
         $this->smarty->assign('pageTitle', 'Каталог');
-        $this->smarty->assign('allCategories', $allCategories);
         $this->smarty->assign('latestProducts', $latestProducts);
-        $this->smarty->assign('productsWithDiscount', $productsWithDiscount);
-    
+        
+        //Pagination
+        $itemsTotal = Product::countAllAvailable($letter);
+        $paginator = new Paginator($page, $itemsTotal, Product::SHOW_BY_DEFAULT,
+                'page-');
+        $pagination = $paginator->getHtml();
+        $this->smarty->assign('pagination', $pagination);
+        
         Utils::loadTemplate($this->smarty, 'header');
         Utils::loadTemplate($this->smarty, 'catalog');
         Utils::loadTemplate($this->smarty, 'rightColumn');
@@ -35,29 +39,35 @@ class CatalogController extends BaseController {
         return true;
     }
 
-    public function actionCategory($categoryId, $page = 1){
-        $allCategories = Category::getAllMainCategoriesWithChildren();
+    public function actionCategory($categoryId, $page = 1, $letter = null){
+        parent::loadCommon();
+        
         $latestProducts = Product::getByCategoryId($categoryId, $page);
         foreach ($latestProducts as &$product){
             $product['image'] = Product::getImage($product['id']);
         }
         
-        $productsWithDiscount = Product::getAllWithDiscount();
-        foreach ($productsWithDiscount as &$product){
-            $product['image'] = Product::getImage($product['id']);
+        $currentCategory = Category::getById($categoryId);
+        $categoryName = $currentCategory['name'];
+        if(!Category::checkIfMain($categoryId)){
+            $parentCategory = Category::getById($currentCategory['parent_id']);
+            $categoryName .= " ".$parentCategory['name'];
+            
         }
+        $this->smarty->assign('categoryName', $categoryName);
         
-        
-        
-        
-        //Utils::debug($productsWithDiscount);
         $this->smarty->assign('pageTitle', 'Каталог');
-        $this->smarty->assign('allCategories', $allCategories);
         $this->smarty->assign('latestProducts', $latestProducts);
-        $this->smarty->assign('productsWithDiscount', $productsWithDiscount);
+        
+        //Pagination
+        $itemsTotal = Product::countByCategoryId($categoryId, $letter);
+        $paginator = new Paginator($page, $itemsTotal, Product::SHOW_BY_DEFAULT,
+                'page-');
+        $pagination = $paginator->getHtml();
+        $this->smarty->assign('pagination', $pagination);
     
         Utils::loadTemplate($this->smarty, 'header');
-        Utils::loadTemplate($this->smarty, 'catalog');
+        Utils::loadTemplate($this->smarty, 'category');
         Utils::loadTemplate($this->smarty, 'rightColumn');
         Utils::loadTemplate($this->smarty, 'footer');
         return true;

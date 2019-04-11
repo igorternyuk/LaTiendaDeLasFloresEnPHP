@@ -12,9 +12,9 @@ class SiteController extends BaseController{
     }
 
     public function actionIndex(){
-        $allCategories = Category::getAllMainCategoriesWithChildren();
-        $irises = Product::getByCategoryId(1);
-        Utils::debug($irises);
+        parent::loadCommon();
+        //$irisCount = Product::getLatest(1, 'B');
+        //Utils::debug($irisCount);
         $newProducts = Product::getAllNew();
         foreach ($newProducts as &$product){
             $product['image'] = Product::getImage($product['id']);
@@ -23,16 +23,11 @@ class SiteController extends BaseController{
         foreach ($recommendedProducts as &$product){
             $product['image'] = Product::getImage($product['id']);
         }
-        $productsWithDiscount = Product::getAllWithDiscount();
-        foreach ($productsWithDiscount as &$product){
-            $product['image'] = Product::getImage($product['id']);
-        }
+        
         //Utils::debug($productsWithDiscount);
         $this->smarty->assign('pageTitle', 'Олюсин магазин');
-        $this->smarty->assign('allCategories', $allCategories);
         $this->smarty->assign('newProducts', $newProducts);
         $this->smarty->assign('recommendedProducts', $recommendedProducts);
-        $this->smarty->assign('productsWithDiscount', $productsWithDiscount);
     
         Utils::loadTemplate($this->smarty, 'header');
         Utils::loadTemplate($this->smarty, 'index');

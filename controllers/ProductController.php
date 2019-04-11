@@ -12,6 +12,12 @@ class ProductController extends BaseController {
     }
 
     public function actionView($productId){
-        
+        parent::loadCommon();
+        $product = Product::getById($productId);
+        Utils::loadTemplate($this->smarty, 'header');
+        Utils::loadTemplate($this->smarty, 'product');
+        Utils::loadTemplate($this->smarty, 'rightColumn');
+        Utils::loadTemplate($this->smarty, 'footer');
+        return true;
     }
 }

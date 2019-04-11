@@ -13,12 +13,12 @@
     <div id="menu">
       <ul>
         <li class="selected"><a href="/">Главная</a></li>
-        <li><a href="catalog">Каталог</a></li>
-        <li><a href="user/register">Регистрация</a></li>
-        <li><a href="user/login">Вход</a></li>
-        <li><a href="cabinet">Кабинет</a></li>
-        <li><a href="about">Про нас</a></li>
-        <li><a href="contacts">Контакты</a></li>
+        <li><a href="/catalog">Каталог</a></li>
+        <li><a href="/user/register">Регистрация</a></li>
+        <li><a href="/user/login">Вход</a></li>
+        <li><a href="/cabinet">Кабинет</a></li>
+        <li><a href="/about">Про нас</a></li>
+        <li><a href="/contacts">Контакты</a></li>
       </ul>
     </div>
   </div>

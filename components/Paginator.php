@@ -96,5 +96,18 @@ class Paginator {
        $newUrl = $currentURI . $this->keyOfGet . $page;
        return "<a href='" . $newUrl. "'>" . $label . "</a>";
    }
+   
+   public static function generateLetterReferenceHtml($letter){
+       $currURI = filter_input(INPUT_SERVER, 'REQUEST_URI');       
+       $currentURI = rtrim($currURI, '/').'/';       
+       $currentURI = preg_replace("~letter-([a-z]+)/page-([0-9]+)/~", '', $currentURI);
+       //$currentURI = preg_replace("~catalog/page-([0-9]+)/~", '', $currentURI);
+       if($letter == null){
+           $newUrl = $currentURI;
+       } else {
+           $newUrl = $currentURI . "letter-" . $letter . "/page-1";
+       }
+       return "<a href='" . $newUrl. "'>" . ($letter ? $letter : "Все") . "</a>";
+   }
 
 }

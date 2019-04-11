@@ -1,16 +1,29 @@
 <div class="center_content">
     <div class="left_content">
       <div class="crumb_nav"> <a href="/">На главную</a> &gt;&gt; category name </div>
+      
       <div class="title">
           <span class="title_icon">
               <img src="images/bullet1.gif" alt="" />
           </span>
           Каталог
       </div>
+      
+      <div class="pagination">
+       {foreach $letterReferences as $letter => $ref}
+            {if $letter == $currentLetter}
+                <span class="current">{$currentLetter}</span>
+            {else}
+                {$ref}
+            {/if}
+            {if $letter == 'm'}<br /><br />{/if}
+       {/foreach}
+      </div>
+      
       <div class="new_products">
         {foreach $latestProducts as $product}
             <div class="new_prod_box"> 
-                <a href="product/{$product['id']}">
+                <a href="/product/{$product['id']}">
                     {$product['name']}&nbsp;{$product['price']}&nbsp;грн.
                 </a>
                 <div class="new_prod_bg">
@@ -30,5 +43,7 @@
             </div>
         {/foreach}
       </div>
+      
+      <div>{$pagination}</div>
       <div class="clear"></div>
     </div>

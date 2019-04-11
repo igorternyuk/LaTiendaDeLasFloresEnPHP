@@ -76,4 +76,24 @@ class Category {
         ];
         return Db::executeSelection($sql, $options);
     }
+    
+    public static function getChildrenIds($categoryId){
+        $sql = "SELECT `id` FROM `category` WHERE `status` = 1"
+                . " AND `parent_id` = :id";
+        $options = [
+            [
+                'placeholder' => ':id',
+                'value' => $categoryId,
+                'type' => PDO::PARAM_INT
+            ]
+        ];
+        $ids = [];
+        $res = Db::executeSelection($sql, $options);
+        if($res){
+            foreach ($res as $record){
+                array_push($ids, $record['id']);
+            }
+        }
+        return $ids;
+    }
 }

@@ -7,7 +7,7 @@
  */
 class Product {
     
-    const SHOW_BY_DEFAULT = 6;
+    const SHOW_BY_DEFAULT = 3;
     
     public static function getById($productId){
         $sql = "SELECT * FROM `product` WHERE `id` = :id LIMIT 1";
@@ -25,105 +25,151 @@ class Product {
         return false;
     }
     
-    public static function getLatest(){
-        $sql = "SELECT * FROM `product` WHERE `available` = 1 AND"
-                . " `is_recommended` = 1 ORDER BY `id` DESC LIMIT :lim";
-        $options = [
-            [
-                'placeholder' => ':lim',
-                'value' => self::SHOW_BY_DEFAULT,
-                'type' => PDO::PARAM_INT
-            ]
-        ];
-        return Db::executeSelection($sql, $options);
-    }
-    
-    public static function countByCategoryId($categoryId){
-        if(Category::checkIfMain($categoryId)){
-            $children = Category::getChildren($categoryId);
-            $total = 0;
-            foreach($children as $child){
-                $total += Product::countOfSubcategory($child['id']);
-            }
-            return $total;
-        } else {
-            return self::countOfSubcategory($categoryId);            
+    public static function countAllAvailable($letter = null){
+        $sql = "SELECT COUNT(`id`) AS total FROM `product` WHERE `available` = 1 ";
+        $options = [];
+        if($letter != null){
+            $sql .= " AND `name` LIKE :name ";
+            array_push($options,
+                    [
+                        'placeholder' => ':name',
+                        'value' => $letter.'%',
+                        'type' => PDO::PARAM_STR
+                    ]);
         }
-    }
-    
-    public static function countOfSubcategory($categoryId){
-        $sql = "SELECT COUNT(`id`) AS total FROM `product`"
-                    . " WHERE `category_id` = :category_id";
-        $options = [
-            [
-            'placeholder' => ':category_id',
-            'value' => $categoryId,
-            'type' => PDO::PARAM_INT
-            ]
-        ];
-        $res = Db::executeSelection($sql, $options);
-        //Utils::debug($res);
+        $res = Db::executeSelection($sql, $options);        
         return $res ? $res[0]['total'] : 0;
     }
     
-    public static function getByCategoryId($categoryId, $page = 1){
-        if(Category::checkIfMain($categoryId)){
-            $children = Category::getChildren($categoryId);
-            
-            $total = [];
-            foreach($children as $child){
-                $products = Product::getBySubcategory($child['id'], $page);
-                Utils::debug($products);
-                if(is_array($products)){
-                    array_merge($total, $products);
-                }
-            }
-            return $total;
-        } else {
-            return self::getBySubcategory($categoryId, $page);
-        }
-    }
-    
-    public static function getBySubcategory($categoryId, $page = 1){
-        $sql = "SELECT * FROM `product`"
-                . " WHERE `category_id` = :category_id"
-                . " OFFSET :offset LIMIT :limit";
-        $offset = self::SHOW_BY_DEFAULT * ($page - 1);
+    public static function getLatest(int $page = 1, $letter = null){
+        //Utils::debug($letter);
+        $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
+        $sql = "SELECT * FROM `product` WHERE `available` = 1 ";
         $options = [
             [
-            'placeholder' => ':category_id',
-            'value' => $categoryId,
-            'type' => PDO::PARAM_INT
+                'placeholder' => ':limit',
+                'value' => self::SHOW_BY_DEFAULT,
+                'type' => PDO::PARAM_INT
             ],
             [
-            'placeholder' => ':offset',
-            'value' => $offset,
-            'type' => PDO::PARAM_INT
-            ],
-            [
-            'placeholder' => ':limit',
-            'value' => self::SHOW_BY_DEFAULT,
-            'type' => PDO::PARAM_INT
+                'placeholder' => ':offset',
+                'value' => $offset,
+                'type' => PDO::PARAM_INT
             ]
         ];
-        return Db::executeSelection($sql, $options);
+        if($letter != null){
+            $sql .= " AND `name` LIKE :name ";
+            array_push($options,
+                    [
+                        'placeholder' => ':name',
+                        'value' => lcfirst($letter).'%',
+                        'type' => PDO::PARAM_STR
+                    ]);
+        }
+        $sql .= " LIMIT :limit OFFSET :offset";
+        //Utils::debug($offset);
+        
+       return Db::executeSelection($sql, $options);
+    }
+    
+    public static function countByCategoryId($categoryId, $letter = null){
+        $ids = [$categoryId];
+        if(Category::checkIfMain($categoryId)){
+            $childrenIds = Category::getChildrenIds($categoryId);
+            if(is_array($childrenIds)){
+                $ids = $childrenIds;
+            }
+        }
+        //Utils::debug($ids);
+        $ids = implode(",", $ids);
+        //Utils::debug($ids);
+        $sql = "SELECT COUNT(`id`) AS total FROM `product` WHERE"
+                . " `available` = 1 AND `category_id` IN (:ids) ";
+        
+        $options = [
+            [
+                'placeholder' => ':ids',
+                'value' => $ids,
+                'type' => PDO::PARAM_STR
+            ]
+        ];
+        if($letter != null){
+            $sql .= " AND `name` LIKE :name ";
+            array_push($options,
+                    [
+                        'placeholder' => ':name',
+                        'value' => lcfirst($letter).'%',
+                        'type' => PDO::PARAM_STR
+                    ]);
+        }
+        
+       $res = Db::executeSelection($sql, $options);
+       
+       return intval($res ? $res[0]['total'] : 0);
+    }
+    
+    public static function getByCategoryId($categoryId, $page = 1,
+            $letter = null){
+        $ids = [$categoryId];
+        if(Category::checkIfMain($categoryId)){
+            $childrenIds = Category::getChildrenIds($categoryId);
+            if(is_array($childrenIds)){
+                $ids = $childrenIds;
+            }
+        }
+        //Utils::debug($ids);
+        $ids = implode(",", $ids);
+        //Utils::debug($ids);
+        $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
+        $sql = "SELECT * FROM `product` WHERE `available` = 1"
+                . " AND `category_id` IN (:ids) ";
+        $options = [
+            [
+                'placeholder' => ':ids',
+                'value' => $ids,
+                'type' => PDO::PARAM_STR
+            ],
+            [
+                'placeholder' => ':limit',
+                'value' => self::SHOW_BY_DEFAULT,
+                'type' => PDO::PARAM_INT
+            ],
+            [
+                'placeholder' => ':offset',
+                'value' => $offset,
+                'type' => PDO::PARAM_INT
+            ]
+        ];
+        if($letter != null){
+            $sql .= " AND `name` LIKE :name ";
+            array_push($options,
+                    [
+                        'placeholder' => ':name',
+                        'value' => lcfirst($letter).'%',
+                        'type' => PDO::PARAM_STR
+                    ]);
+        }
+        $sql .= " ORDER BY `id` DESC LIMIT :limit OFFSET :offset";
+        //Utils::debug($sql);
+        
+       return Db::executeSelection($sql, $options);
     }
     
     public static function getAllRecommended(){
         $sql = "SELECT * FROM `product` WHERE `available` = 1 AND"
-                . " `is_recommended` = 1 ORDER BY `id` DESC LIMIT 5";
+                . " `is_recommended` = 1 ORDER BY `id` DESC LIMIT 6";
         return Db::executeSelection($sql);
     }
     
     public static function getAllNew(){
         $sql = "SELECT * FROM `product` WHERE `available` = 1 AND"
-                . " `is_new` = 1 ORDER BY `id` DESC LIMIT 5";
+                . " `is_new` = 1 ORDER BY `id` DESC LIMIT 6";
         return Db::executeSelection($sql);
     }
     
     public static function getAllWithDiscount(){
         $sql = "SELECT * FROM `product` WHERE `available` = 1 AND"
-                . " `discount` = 1 ORDER BY `id` DESC LIMIT 5";
+                . " `discount` = 1 ORDER BY `id` DESC LIMIT 6";
         return Db::executeSelection($sql);
     }
     

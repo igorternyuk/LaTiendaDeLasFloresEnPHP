@@ -1,4 +1,27 @@
-<div class="center_content">
+<?php
+/* Smarty version 3.1.33, created on 2019-04-11 13:57:02
+  from '/opt/lampp/htdocs/flower-shop.local/views/default/product.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.33',
+  'unifunc' => 'content_5caf2b8ed5b263_32382095',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '07ac3815799a8deb139541b6d7afa7ca72a8705f' => 
+    array (
+      0 => '/opt/lampp/htdocs/flower-shop.local/views/default/product.tpl',
+      1 => 1554983682,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5caf2b8ed5b263_32382095 (Smarty_Internal_Template $_smarty_tpl) {
+?><div class="center_content">
     <div class="left_content">
       <div class="crumb_nav"> <a href="http://all-free-download.com/free-website-templates/">home</a> &gt;&gt; product name </div>
       <div class="title"><span class="title_icon"><img src="images/bullet1.gif" alt="" /></span>Product name</div>
@@ -61,4 +84,5 @@
         </div>
       </div>
       <div class="clear"></div>
-    </div>
+    </div><?php }
+}
