@@ -15,6 +15,14 @@ class BaseController {
     protected function loadCommon(){
         
         $allCategories = Category::getAllMainCategoriesWithChildren();
+        foreach($allCategories as &$category){
+            if(Category::checkIfMain($category['id'])){
+                foreach ($category['children'] as &$child){
+                    $child['count'] = Product::countByCategoryId($child['id']);
+                }
+            }
+            $category['count'] = Product::countByCategoryId($category['id']);
+        }
         $productsWithDiscount = Product::getAllWithDiscount();
         foreach ($productsWithDiscount as &$product){
             $product['image'] = Product::getImage($product['id']);

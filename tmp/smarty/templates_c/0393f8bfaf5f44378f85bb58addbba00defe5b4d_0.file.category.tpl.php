@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-04-11 21:24:36
+/* Smarty version 3.1.33, created on 2019-04-12 16:40:19
   from '/opt/lampp/htdocs/flower-shop.local/views/default/category.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5caf9474cfb312_33602594',
+  'unifunc' => 'content_5cb0a3532a8a90_29466685',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0393f8bfaf5f44378f85bb58addbba00defe5b4d' => 
     array (
       0 => '/opt/lampp/htdocs/flower-shop.local/views/default/category.tpl',
-      1 => 1555009731,
+      1 => 1555079987,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5caf9474cfb312_33602594 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cb0a3532a8a90_29466685 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="center_content">
     <div class="left_content">
       <div class="crumb_nav"> <a href="/">На главную</a> &gt;&gt; <?php echo $_smarty_tpl->tpl_vars['categoryName']->value;?>
@@ -80,7 +80,7 @@ images/new_icon.gif" alt="" />
 images/promo_icon.gif" alt="" />
                         </span>
                     <?php }?>
-                    <a href="product/<?php echo $_smarty_tpl->tpl_vars['product']->value['id'];?>
+                    <a href="/product/<?php echo $_smarty_tpl->tpl_vars['product']->value['id'];?>
 ">
                         <img src="<?php echo $_smarty_tpl->tpl_vars['product']->value['image'];?>
 " width='90' alt="" class="thumb" border="0" />

@@ -11,10 +11,11 @@
 <script src="{$templateWebPath}js/java.js" type="text/javascript" ></script>
 <script src="{$templateWebPath}js/jquery.cycle2.min.js"></script>
 <script src="{$templateWebPath}js/jquery.cycle2.carousel.min.js"></script>
-<script src="/js/main.js" type="text/javascript" ></script>
 <script src="/js/query-3.3.1.min.js" type="text/javascript" ></script>
+<script src="/js/main.js" type="text/javascript" ></script>
 
 </head>
+
 <body>
     
 <div id="wrap">

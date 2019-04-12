@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-04-11 18:50:42
+/* Smarty version 3.1.33, created on 2019-04-12 16:49:39
   from '/opt/lampp/htdocs/flower-shop.local/views/default/rightColumn.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5caf7062de1b82_48714847',
+  'unifunc' => 'content_5cb0a583b85fa0_37088772',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '397cf2f43fd23510e0e8894b89b355deeb555060' => 
     array (
       0 => '/opt/lampp/htdocs/flower-shop.local/views/default/rightColumn.tpl',
-      1 => 1555001438,
+      1 => 1555080578,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5caf7062de1b82_48714847 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cb0a583b85fa0_37088772 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="right_content">
       <div class="languages_box"> <span class="red">Languages:</span> <a href="http://all-free-download.com/free-website-templates/" class="selected"><img src="<?php echo $_smarty_tpl->tpl_vars['templateWebPath']->value;?>
 images/gb.gif" alt="" border="0" /></a> <a href="http://all-free-download.com/free-website-templates/"><img src="<?php echo $_smarty_tpl->tpl_vars['templateWebPath']->value;?>
@@ -83,7 +83,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['category']->value) {
 ?>
               <li ><a href="/catalog/<?php echo $_smarty_tpl->tpl_vars['category']->value['id'];?>
 "><?php echo $_smarty_tpl->tpl_vars['category']->value['name'];?>
-</a></li>
+(<?php echo $_smarty_tpl->tpl_vars['category']->value['count'];?>
+)</a></li>
             <?php if ($_smarty_tpl->tpl_vars['category']->value['children'] != false) {?>
                 <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['category']->value['children'], 'child');
@@ -92,7 +93,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['child']->value) {
 ?>
                 <li ><a class="sub" href="/catalog/<?php echo $_smarty_tpl->tpl_vars['child']->value['id'];?>
 "><?php echo $_smarty_tpl->tpl_vars['child']->value['name'];?>
-</a></li>
+(<?php echo $_smarty_tpl->tpl_vars['child']->value['count'];?>
+)</a></li>
                 <?php
 }
 }

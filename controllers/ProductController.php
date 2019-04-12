@@ -12,6 +12,8 @@ class ProductController extends BaseController {
     }
 
     public function actionView($productId){
+        $testCount = Product::countByCategoryId(1);
+        //Utils::debug($testCount);
         parent::loadCommon();
         $currentProduct = Product::getById($productId);
         $currentProduct['image'] = Product::getImage($productId);
@@ -20,6 +22,7 @@ class ProductController extends BaseController {
         foreach ($similarProducts as &$product){
             $product['image'] = Product::getImage($product['id']);
         }
+        //Utils::debug($similarProducts);
         $this->smarty->assign('pageTitle', 'Олюсин магазин');
         $this->smarty->assign('currentProduct', $currentProduct);
         $this->smarty->assign('similarProducts', $similarProducts);

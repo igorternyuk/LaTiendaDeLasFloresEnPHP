@@ -82,10 +82,10 @@ class Product {
         }
         //Utils::debug($ids);
         $ids = implode(",", $ids);
-        //Utils::debug($ids);
-        $sql = "SELECT COUNT(`id`) AS total FROM `product` WHERE"
-                . " `available` = 1 AND `category_id` IN (:ids) ";
         
+        $sql = "SELECT COUNT(`id`) AS total FROM `product` WHERE"
+                . " `available` = 1 AND FIND_IN_SET(`category_id`, :ids) ";
+        //Utils::debug($sql);
         $options = [
             [
                 'placeholder' => ':ids',
@@ -122,7 +122,7 @@ class Product {
         //Utils::debug($ids);
         $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
         $sql = "SELECT * FROM `product` WHERE `available` = 1"
-                . " AND `category_id` IN (:ids) ";
+                . " AND FIND_IN_SET(`category_id`, :ids) ";
         $options = [
             [
                 'placeholder' => ':ids',

@@ -4,7 +4,7 @@
       
       <div class="title">
           <span class="title_icon">
-              <img src="images/bullet1.gif" alt="" />
+              <img src="{$templteWebPath}images/bullet1.gif" alt="" />
           </span>
           Каталог
       </div>
@@ -36,7 +36,7 @@
                             <img src="{$templateWebPath}images/promo_icon.gif" alt="" />
                         </span>
                     {/if}
-                    <a href="product/{$product['id']}">
+                    <a href="/product/{$product['id']}">
                         <img src="{$product['image']}" width='90' alt="" class="thumb" border="0" />
                     </a>
 		</div>

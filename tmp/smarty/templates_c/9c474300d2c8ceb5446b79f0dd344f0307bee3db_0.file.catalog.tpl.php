@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-04-11 18:48:35
+/* Smarty version 3.1.33, created on 2019-04-12 16:40:19
   from '/opt/lampp/htdocs/flower-shop.local/views/default/catalog.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5caf6fe38fd831_90823358',
+  'unifunc' => 'content_5cb0a35355afd8_54194931',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9c474300d2c8ceb5446b79f0dd344f0307bee3db' => 
     array (
       0 => '/opt/lampp/htdocs/flower-shop.local/views/default/catalog.tpl',
-      1 => 1555001311,
+      1 => 1555080015,
       2 => 'file',
     ),
   ),
@@ -20,14 +20,15 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5caf6fe38fd831_90823358 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cb0a35355afd8_54194931 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="center_content">
     <div class="left_content">
       <div class="crumb_nav"> <a href="/">На главную</a> &gt;&gt; category name </div>
       
       <div class="title">
           <span class="title_icon">
-              <img src="images/bullet1.gif" alt="" />
+              <img src="<?php echo $_smarty_tpl->tpl_vars['templteWebPath']->value;?>
+images/bullet1.gif" alt="" />
           </span>
           Каталог
       </div>
@@ -77,7 +78,7 @@ images/new_icon.gif" alt="" />
 images/promo_icon.gif" alt="" />
                         </span>
                     <?php }?>
-                    <a href="product/<?php echo $_smarty_tpl->tpl_vars['product']->value['id'];?>
+                    <a href="/product/<?php echo $_smarty_tpl->tpl_vars['product']->value['id'];?>
 ">
                         <img src="<?php echo $_smarty_tpl->tpl_vars['product']->value['image'];?>
 " width='90' alt="" class="thumb" border="0" />

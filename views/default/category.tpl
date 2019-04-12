@@ -38,7 +38,7 @@
                             <img src="{$templateWebPath}images/promo_icon.gif" alt="" />
                         </span>
                     {/if}
-                    <a href="product/{$product['id']}">
+                    <a href="/product/{$product['id']}">
                         <img src="{$product['image']}" width='90' alt="" class="thumb" border="0" />
                     </a>
 		</div>

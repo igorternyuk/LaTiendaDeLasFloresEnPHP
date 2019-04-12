@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-04-12 11:38:28
+/* Smarty version 3.1.33, created on 2019-04-12 15:48:57
   from '/opt/lampp/htdocs/flower-shop.local/views/default/header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cb05c947aece4_81323606',
+  'unifunc' => 'content_5cb097499660c5_40487826',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c0ca269f8a8ddd59c43c8195e5133e1099f0cfd9' => 
     array (
       0 => '/opt/lampp/htdocs/flower-shop.local/views/default/header.tpl',
-      1 => 1555061890,
+      1 => 1555076913,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5cb05c947aece4_81323606 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cb097499660c5_40487826 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -56,13 +56,14 @@ js/jquery.cycle2.min.js"><?php echo '</script'; ?>
 js/jquery.cycle2.carousel.min.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
- src="/js/main.js" type="text/javascript" ><?php echo '</script'; ?>
+ src="/js/query-3.3.1.min.js" type="text/javascript" ><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
- src="/js/query-3.3.1.min.js" type="text/javascript" ><?php echo '</script'; ?>
+ src="/js/main.js" type="text/javascript" ><?php echo '</script'; ?>
 >
 
 </head>
+
 <body>
     
 <div id="wrap">
