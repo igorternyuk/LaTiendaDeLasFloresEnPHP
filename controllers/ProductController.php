@@ -13,7 +13,16 @@ class ProductController extends BaseController {
 
     public function actionView($productId){
         parent::loadCommon();
-        $product = Product::getById($productId);
+        $currentProduct = Product::getById($productId);
+        $currentProduct['image'] = Product::getImage($productId);
+        $categoryId = $currentProduct['category_id'];
+        $similarProducts = Product::getByCategoryId($categoryId);
+        foreach ($similarProducts as &$product){
+            $product['image'] = Product::getImage($product['id']);
+        }
+        $this->smarty->assign('pageTitle', 'Олюсин магазин');
+        $this->smarty->assign('currentProduct', $currentProduct);
+        $this->smarty->assign('similarProducts', $similarProducts);
         Utils::loadTemplate($this->smarty, 'header');
         Utils::loadTemplate($this->smarty, 'product');
         Utils::loadTemplate($this->smarty, 'rightColumn');

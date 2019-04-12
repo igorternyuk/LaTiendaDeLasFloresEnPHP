@@ -439,7 +439,7 @@ height:25px;
 border:none;
 cursor:pointer;
 text-align:center;
-float:right;
+float:left;
 color:#FFFFFF;
 background:url(../images/register_bt.gif) no-repeat center;
 }

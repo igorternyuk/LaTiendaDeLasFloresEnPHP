@@ -66,7 +66,7 @@ class Product {
                         'type' => PDO::PARAM_STR
                     ]);
         }
-        $sql .= " LIMIT :limit OFFSET :offset";
+        $sql .= " ORDER BY `id` DESC LIMIT :limit OFFSET :offset";
         //Utils::debug($offset);
         
        return Db::executeSelection($sql, $options);
