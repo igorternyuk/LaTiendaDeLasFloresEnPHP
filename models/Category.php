@@ -96,4 +96,15 @@ class Category {
         }
         return $ids;
     }
+    
+    public static function getFullName($productId){
+        $category = Category::getById($categoryId);
+        $name = $category['name'];
+        if(!Category::checkIfMain($categoryId)){
+            $parent = Category::getById($category['parent_id']);
+            $parentName= $parent['name'];
+            $name = $parentName . " " . $name;
+        }
+        return $name;
+    }
 }

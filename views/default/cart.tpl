@@ -1,40 +1,74 @@
 <div class="center_content">
     <div class="left_content">
-      <div class="title"><span class="title_icon"><img src="images/bullet1.gif" alt="" /></span>My cart</div>
+      
+        <div class="title">
+          <span class="title_icon"><img src="images/bullet1.gif" alt="" />
+          </span>
+          Корзина
+      </div>
+        
       <div class="feat_prod_box_details">
+        {if count($productsInCart) > 0}
         <table class="cart_table">
           <tr class="cart_title">
-            <td>ID товара</td>
-            <td>Название</td>
-            <td>Цена за единицу</td>
-            <td>Количество</td>
-            <td>Итого</td>
+            <th>ID товара</th>
+            <th>Название</th>
+            <!--th>Код товара</th-->
+            <th>Изображение</th>
+            <th>Цена за единицу</th>
+            <th>Количество</th>
+            <th>Итого</th>
+            <th>Дейтсвие</th>
           </tr>
           {foreach $productsInCart as $product}
-            <tr>
+            <tr id="productRow_{$product['id']}">
+              <td>{$product['id']}</td>
+              <td><a href="/product/{$product['id']}">{$product['name']}</a></td>
+              <!--td>{$product['code']}</td-->
               <td>
-                  <a href="/{$product['id']}">
-                      <img src="{$product['image']}" width='100' alt="" border="0" class="cart_thumb" />
+                  <a href="/product/{$product['id']}">
+                      <img src="{$product['image']}" width='85' alt="" border="0" class="cart_thumb" />
                   </a>
+              </td>              
+              <td>{$product['price']}</td>
+              <td width='60' >
+                  <input width='50' id="productCount_{$product['id']}"
+                         name="productCount_{$product['id']}" type='number' min=0 max='{$product['stock']}'
+                         value="{$product['count']}"
+                                    onchange="updateProductCount({$product['id']});"
+                  >
+                  
               </td>
-              <td>Gift flowers</td>
-              <td>100$</td>
-              <td>1</td>
-              <td>100$</td>
+              <td>
+                  <span  id="subtotal_{$product['id']}" name="subtotal_{$product['id']}">
+                      {$product['subtotal']}
+                  </span> грн.
+              </td>
+              <td><a href='#' onclick="removeFromCart({$product['id']}); return false;">Удалить</a></td>
             </tr>
           {/foreach}
           
           <tr>
-            <td colspan="4" class="cart_total"><span class="red">Сумма заказа:</span></td>
-            <td> 325$</td>
+            <td colspan="6" class="cart_total">
+                <span class="red">Сумма заказа:</span>
+            </td>
+            <td>
+                <span id="cartTotalSumInTable" name='cartTotalSumInTable'>
+                    {$cartTotalSum}
+                </span> грн.
+            </td>
           </tr>
         </table>
             <a href="/catalog" class="continue">
-                &lt; Вернуться в каталог
+                &lt; Назад
             </a>
           <a href="/order/checkout" class="checkout">
-              checkout &gt;
+              Заказать &gt;
           </a>
+        {else}
+            <h3>Ваша корзина пуста.</h3>
+        {/if}
+          
       </div>
       <div class="clear"></div>
     </div>

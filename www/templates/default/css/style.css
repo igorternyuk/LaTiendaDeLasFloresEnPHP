@@ -2,6 +2,10 @@ hideme{
     display: none;
 }
 
+input[type="number"] {
+   width:50px;
+}
+
 body
 {
 background-color:#c0c0c0;
@@ -237,7 +241,7 @@ position:relative;
 position:absolute;
 top:0px;
 right:0px;
-z-index:200;
+z-index:0;
 }
 .special_icon{
 position:absolute;
@@ -498,7 +502,7 @@ line-height:20px;
 /*--------------cart_table-------------*/
 .cart_table{
 width:440px;
-border:1px #CCCCCC solid;
+border:2px #CCCCCC solid;
 text-align:center;
 }
 tr.cart_title{

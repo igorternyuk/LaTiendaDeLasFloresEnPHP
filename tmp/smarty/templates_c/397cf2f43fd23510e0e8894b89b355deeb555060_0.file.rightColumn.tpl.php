@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-04-12 16:49:39
+/* Smarty version 3.1.33, created on 2019-04-13 14:43:54
   from '/opt/lampp/htdocs/flower-shop.local/views/default/rightColumn.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cb0a583b85fa0_37088772',
+  'unifunc' => 'content_5cb1d98a7890f1_74308338',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '397cf2f43fd23510e0e8894b89b355deeb555060' => 
     array (
       0 => '/opt/lampp/htdocs/flower-shop.local/views/default/rightColumn.tpl',
-      1 => 1555080578,
+      1 => 1555159431,
       2 => 'file',
     ),
   ),
@@ -20,18 +20,21 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5cb0a583b85fa0_37088772 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cb1d98a7890f1_74308338 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="right_content">
-      <div class="languages_box"> <span class="red">Languages:</span> <a href="http://all-free-download.com/free-website-templates/" class="selected"><img src="<?php echo $_smarty_tpl->tpl_vars['templateWebPath']->value;?>
-images/gb.gif" alt="" border="0" /></a> <a href="http://all-free-download.com/free-website-templates/"><img src="<?php echo $_smarty_tpl->tpl_vars['templateWebPath']->value;?>
-images/fr.gif" alt="" border="0" /></a> <a href="http://all-free-download.com/free-website-templates/"><img <?php echo $_smarty_tpl->tpl_vars['templateWebPath']->value;?>
-images/de.gif" alt="" border="0" /></a> </div>
-      <div class="currency"> <span class="red">Currency: </span> <a href="http://all-free-download.com/free-website-templates/">GBP</a> <a href="http://all-free-download.com/free-website-templates/">EUR</a> <a href="http://all-free-download.com/free-website-templates/" class="selected">USD</a> </div>
-      <div class="cart">
-        <div class="title"><span class="title_icon"><img src="<?php echo $_smarty_tpl->tpl_vars['templateWebPath']->value;?>
-images/cart.gif" alt="" /></span>Корзина</div>
-        <div class="home_cart_content"> 3 x товаров | <span class="red">TOTAL: 100$</span> </div>
-        <a href="cart.html" class="view_cart">view cart</a> </div>
+        <div class="cart">
+            <div class="title">
+                <span class="title_icon">
+                    <img src="<?php echo $_smarty_tpl->tpl_vars['templateWebPath']->value;?>
+images/cart.gif" alt="" />
+                </span>
+                <a href='/cart'>Корзина</a>
+            </div>
+        <div class="home_cart_content"> Товаров: <span id="cartTotalItems" name="cartTotalItems"><?php echo $_smarty_tpl->tpl_vars['cartTotalItems']->value;?>
+</span> | <span class="red">Сумма:<span id="cartTotalSum" name="cartTotalSum" class="red"><?php echo $_smarty_tpl->tpl_vars['cartTotalSum']->value;?>
+</span>&nbsp;грн.</span> </div>
+        </div>
+        
       <div class="title"><span class="title_icon"><img src="<?php echo $_smarty_tpl->tpl_vars['templateWebPath']->value;?>
 images/bullet3.gif" alt="" /></span>О нашем магазине</div>
       <div class="about">

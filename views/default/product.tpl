@@ -7,7 +7,7 @@
           </span>{$currentProduct['name']}</div>
       <div class="feat_prod_box_details">
        <div class="prod_img">
-            <a href="{$currentProduct['image']}">
+            <a href="{$currentProduct['image']}" rel="lightbox">
                 <img src="{$currentProduct['image']}" width='150' alt="" border="0" />
             </a>
             <br />
@@ -17,8 +17,8 @@
         <div class="prod_det_box">
           <div class="box_top"></div>
           <div class="box_center">
-            <!--<div class="prod_title">Описание:</div>
-            <p class="details">{$currentProduct['description']}</p> -->
+            {*<div class="prod_title">Описание:</div>
+            <p class="details">{$currentProduct['description']}</p> *}
             <div class="price">
                 <strong>Код товара:</strong>
                 <span class="red">{$currentProduct['code']}</span>
@@ -47,7 +47,10 @@
                 </div>
             {/if}
             <div class="price">
-                <span><input type="button" class="register" value="В корзину" /></span>
+                <span>
+                    <input type="button" class="register" value="В корзину"
+                           onclick="addToCart({$currentProduct['id']});"/>
+                </span>
             </div>
             <div class="clear"></div>
           </div>

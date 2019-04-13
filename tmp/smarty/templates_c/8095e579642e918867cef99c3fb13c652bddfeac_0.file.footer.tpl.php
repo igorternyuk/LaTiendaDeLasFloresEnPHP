@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-04-12 15:59:47
+/* Smarty version 3.1.33, created on 2019-04-13 12:56:43
   from '/opt/lampp/htdocs/flower-shop.local/views/default/footer.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cb099d3b802e9_77564830',
+  'unifunc' => 'content_5cb1c06b358ff8_81307312',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8095e579642e918867cef99c3fb13c652bddfeac' => 
     array (
       0 => '/opt/lampp/htdocs/flower-shop.local/views/default/footer.tpl',
-      1 => 1555077584,
+      1 => 1555152998,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5cb099d3b802e9_77564830 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cb1c06b358ff8_81307312 (Smarty_Internal_Template $_smarty_tpl) {
 ?>    <!--end of left content-->
     
     <!--end of right content-->
@@ -57,6 +57,7 @@ images/csscreme.gif" alt="" border="0" /></a></div>
     });
 <?php echo '</script'; ?>
 >
+
 </body>
 </html><?php }
 }

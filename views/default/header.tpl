@@ -5,17 +5,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="{$templateWebPath}css/style.css" type="text/css" />
 <link rel="stylesheet" href="{$templateWebPath}css/lightbox.css" type="text/css" media="screen" />
+
+
 <script src="{$templateWebPath}js/prototype.js" type="text/javascript"></script>
 <script src="{$templateWebPath}js/scriptaculous.js?load=effects" type="text/javascript"></script>
 <script src="{$templateWebPath}js/lightbox.js" type="text/javascript"></script>
 <script src="{$templateWebPath}js/java.js" type="text/javascript" ></script>
-<script src="{$templateWebPath}js/jquery.cycle2.min.js"></script>
-<script src="{$templateWebPath}js/jquery.cycle2.carousel.min.js"></script>
 <script src="/js/query-3.3.1.min.js" type="text/javascript" ></script>
 <script src="/js/main.js" type="text/javascript" ></script>
 
 </head>
-
 <body>
     
 <div id="wrap">
@@ -25,10 +24,14 @@
       <ul>
         <li class="selected"><a href="/">Главная</a></li>
         <li><a href="/catalog">Каталог</a></li>
-        <li><a href="/user/register">Регистрация</a></li>
-        <li><a href="/user/login">Вход</a></li>
-        <li><a href="/cabinet">Кабинет</a></li>
-        <li><a href="/about">Про нас</a></li>
+        {if isset($loggedUser) }
+            <li><a href="/cabinet">Кабинет</a></li>
+            <li><a href="/user/login">Выход</a></li>
+        {else}
+            <li><a href="/user/register">Регистрация</a></li>
+            <li><a href="/user/login">Вход</a></li>
+        {/if}
+        <li><a href="/about">О нас</a></li>
         <li><a href="/contacts">Контакты</a></li>
       </ul>
     </div>
