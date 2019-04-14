@@ -26,10 +26,10 @@
         <li><a href="/catalog">Каталог</a></li>
         {if isset($loggedUser) }
             <li><a href="/cabinet">Кабинет</a></li>
-            <li><a href="/user/login">Выход</a></li>
+            <li><a href="/user/logout">Выход</a></li>
         {else}
-            <li><a href="/user/register">Регистрация</a></li>
-            <li><a href="/user/login">Вход</a></li>
+            <li><a href="/user/showRegisterForm">Регистрация</a></li>
+            <li><a href="/user/showLoginForm">Вход</a></li>
         {/if}
         <li><a href="/about">О нас</a></li>
         <li><a href="/contacts">Контакты</a></li>

@@ -1,6 +1,6 @@
 <div class="center_content">
     <div class="left_content">
-        <div class="crumb_nav"> <a href="/">На главную</a> &gt;&gt; category name </div>
+        <div class="crumb_nav"> <a href="/">На главную</a> &gt;&gt; Корзина </div>
         <div class="title">
           <span class="title_icon"><img src="images/bullet1.gif" alt="" />
           </span>

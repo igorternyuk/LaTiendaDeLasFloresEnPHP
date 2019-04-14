@@ -1,4 +1,27 @@
-<div class="center_content">
+<?php
+/* Smarty version 3.1.33, created on 2019-04-14 11:02:28
+  from '/opt/lampp/htdocs/flower-shop.local/views/default/user/register.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.33',
+  'unifunc' => 'content_5cb2f7247b7a14_97557561',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '1235cff8a8b9a334bd3ef637ffbc218e9e992255' => 
+    array (
+      0 => '/opt/lampp/htdocs/flower-shop.local/views/default/user/register.tpl',
+      1 => 1555232341,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5cb2f7247b7a14_97557561 (Smarty_Internal_Template $_smarty_tpl) {
+?><div class="center_content">
     <div class="left_content">
       <div class="title">
           <span class="title_icon">
@@ -49,4 +72,5 @@
         </div>
       </div>
       <div class="clear"></div>
-    </div>
+    </div><?php }
+}

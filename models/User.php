@@ -66,26 +66,29 @@ class User {
     
     public static function checkPhone($phone){
         $pattern = "~([+38]?)0((50)|(63)|(66)|(67)|(68)|(93)|(95)|(96)|(97)|"
-                . "(99)|(99))([0-9]{6})~";
+                . "(98)|(99))([0-9]{6})~";
         return preg_match($pattern, $phone);
     }
     
-    public static function register($username, $email, $password, $isAdmin = false){
-        $encryptedPassword = md5($password);
+    public static function register($params){
+        $encryptedPassword = md5($params['password']);
         $db = Db::getConnection();
-        $query = "INSERT INTO `user` (`name`, `email`, `password`)"
-                . " VALUES(:username, :email, :password)";
+        $query = "INSERT INTO `user` (`name`, `email`, `password`, `address`, `phone`)"
+                . " VALUES(:username, :email, :password, :address, :phone)";
         $statement = $db->prepare($query);
-        $statement->bindParam(':username', $username, PDO::PARAM_STR);
-        $statement->bindParam(':email', $email, PDO::PARAM_STR);
+        $statement->bindParam(':username', $params['username'], PDO::PARAM_STR);
+        $statement->bindParam(':email', $params['email'], PDO::PARAM_STR);
         $statement->bindParam(':password', $encryptedPassword, PDO::PARAM_STR);
+        $statement->bindParam(':phone', $params['phone'], PDO::PARAM_STR);
+        $statement->bindParam(':address', $params['address'], PDO::PARAM_STR);
         $userAdded = $statement->execute();
         $user_id = $db->lastInsertId();
         $query = "INSERT INTO `user_role` (`user_id`, `role_id`)"
-                . " VALUES(:user_id, :role_id";
+                . " VALUES(:user_id, :role_id)";
         $statement = $db->prepare($query);
         $statement->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-        $statement->bindParam(':role_id', $user_id, $isAdmin ? 1 : 2);
+        $roleId = $params['is_admin'] ? 1 : 2;
+        $statement->bindParam(':role_id', $roleId , PDO::PARAM_INT);
         $roleAdded = $statement->execute();
         return $userAdded && $roleAdded;
     }
@@ -157,6 +160,10 @@ class User {
 
     public static function login($userId){
         $_SESSION['user'] = $userId;
+    }
+    
+    public static function logout(){
+        unset($_SESSION['user']);
     }
     
     public static function checkIfLogged(){

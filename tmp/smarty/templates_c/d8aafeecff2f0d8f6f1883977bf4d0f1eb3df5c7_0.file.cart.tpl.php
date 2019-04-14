@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-04-13 18:00:26
+/* Smarty version 3.1.33, created on 2019-04-13 18:48:17
   from '/opt/lampp/htdocs/flower-shop.local/views/default/cart.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cb2079ae3b439_73473798',
+  'unifunc' => 'content_5cb212d1520d39_37179991',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd8aafeecff2f0d8f6f1883977bf4d0f1eb3df5c7' => 
     array (
       0 => '/opt/lampp/htdocs/flower-shop.local/views/default/cart.tpl',
-      1 => 1555160435,
+      1 => 1555172926,
       2 => 'file',
     ),
   ),
@@ -20,10 +20,10 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5cb2079ae3b439_73473798 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cb212d1520d39_37179991 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="center_content">
     <div class="left_content">
-        <div class="crumb_nav"> <a href="/">На главную</a> &gt;&gt; category name </div>
+        <div class="crumb_nav"> <a href="/">На главную</a> &gt;&gt; Корзина </div>
         <div class="title">
           <span class="title_icon"><img src="images/bullet1.gif" alt="" />
           </span>

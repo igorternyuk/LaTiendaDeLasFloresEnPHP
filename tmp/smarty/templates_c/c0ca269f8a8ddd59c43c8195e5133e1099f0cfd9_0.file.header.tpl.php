@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-04-13 13:34:01
+/* Smarty version 3.1.33, created on 2019-04-13 18:23:03
   from '/opt/lampp/htdocs/flower-shop.local/views/default/header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cb1c929a76660_47475294',
+  'unifunc' => 'content_5cb20ce7926e65_73151865',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c0ca269f8a8ddd59c43c8195e5133e1099f0cfd9' => 
     array (
       0 => '/opt/lampp/htdocs/flower-shop.local/views/default/header.tpl',
-      1 => 1555155225,
+      1 => 1555172580,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5cb1c929a76660_47475294 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cb20ce7926e65_73151865 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -69,10 +69,10 @@ images/logo.gif" alt="" border="0" /></a></div>
         <li><a href="/catalog">Каталог</a></li>
         <?php if (isset($_smarty_tpl->tpl_vars['loggedUser']->value)) {?>
             <li><a href="/cabinet">Кабинет</a></li>
-            <li><a href="/user/login">Выход</a></li>
+            <li><a href="/user/logout">Выход</a></li>
         <?php } else { ?>
-            <li><a href="/user/register">Регистрация</a></li>
-            <li><a href="/user/login">Вход</a></li>
+            <li><a href="/user/showRegisterForm">Регистрация</a></li>
+            <li><a href="/user/showLoginForm">Вход</a></li>
         <?php }?>
         <li><a href="/about">О нас</a></li>
         <li><a href="/contacts">Контакты</a></li>

@@ -12,12 +12,53 @@ function getData(objForm){
     return data;
 }
 
+function clearForm(objForm){
+    $('input, textarea', $(objForm)).each(function(){
+        if(this.name && this.name !== ''){
+            this.value = '';
+        }
+    });
+}
+
 function register(){
-    
+    let postData = getData("#registerForm");
+    console.log("registerFormData:");
+    console.log(postData);
+    $.ajax({
+        method: 'post',
+        dataType: 'json',
+        data: postData,
+        url: '/user/register',
+        success: function(data){
+            if(data['success']){
+                alert("Пользователь успешно зарегистрирован");
+                clearForm("#registerForm");
+            } else {
+                let errors = data['errors'];
+                let errorHtml = "<h3>Ошибки:</h3>";
+                for(let i = 0; i < errors.length; ++i){
+                    errorHtml += "<p>" + (i + 1) + ") <span style='color:red;' >" + errors[i] + "</span></p><br />";
+                }
+                $("#errors").html(errorHtml);
+            } 
+        }
+    });
 }
 
 function login(){
-    
+    let postData = getData("#registerForm");
+    console.log("registerFormData:");
+    console.log(postData);
+    $.ajax({
+        method: 'post',
+        dataType: 'json',
+        data: postData,
+        url: '/user/register',
+        success: function(data){
+            console.log("Data received");
+            console.log(data);
+        }
+    });
 }
 
 function logout(){

@@ -12,8 +12,6 @@ class ProductController extends BaseController {
     }
 
     public function actionView($productId){
-        $testCount = Product::countByCategoryId(1);
-        //Utils::debug($testCount);
         parent::loadCommon();
         $currentProduct = Product::getById($productId);
         $currentProduct['image'] = Product::getImage($productId);
