@@ -6,6 +6,16 @@
  * @author Igor Ternyuk <xmonad100 at gmail.com>
  */
 class Db {
+    private static $lastID;
+    private static $lastError;
+    
+    public static function getLastInsertId(){
+        return self::$lastID;
+    }
+    
+    public static function getLastError(){
+        return self::$lastError;
+    }
     
     public static function getConnection(){
         $paramsPath = '../config/db_params.php';
@@ -22,8 +32,10 @@ class Db {
         foreach($params as $par){
             $statement->bindParam($par['placeholder'], $par['value'], $par['type']);
         }
-        
-        return $statement->execute();
+        $res =  $statement->execute();
+        self::$lastID = $db->lastInsertId();
+        self::$lastError = $db->errorInfo();
+        return $res;
     }
     
     public static function executeSelection($sql, $params = []){
@@ -33,8 +45,10 @@ class Db {
             $statement->bindParam($par['placeholder'], $par['value'], $par['type']);
         }
         if($statement->execute()){
+            self::$lastError = $db->errorInfo();
             return $statement->fetchAll(PDO::FETCH_ASSOC);
         }
+        self::$lastError = $db->errorInfo();
         return false;
     }
 }

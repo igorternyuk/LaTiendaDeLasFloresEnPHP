@@ -14,7 +14,7 @@
       </div>
         
       <div class="feat_prod_box_details">
-        {if count($productsInCart) > 0}
+        {if count($userOrders) > 0}
         <table class="cart_table">
           <tr class="cart_title">
             <th>ID товара</th>

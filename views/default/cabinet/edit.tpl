@@ -34,7 +34,7 @@
             </div>
             <div class="form_row">
               <label class="contact"><strong>Email:</strong></label>
-              <input type="email" id="email" name="email" class="contact_input" value="{if isset($loggedUser)} {$loggedUser['email']} {/if}" />
+              <input type="email" id="email" name="email" class="contact_input" value="{if isset($loggedUser)} {$loggedUser['email']} {/if}" readonly/>
             </div>
             <div class="form_row">
               <label class="contact"><strong>Телефон:</strong></label>

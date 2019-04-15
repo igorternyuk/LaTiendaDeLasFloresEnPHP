@@ -166,6 +166,25 @@ function updateUser(){
     });
 }
 
-function checkout(){
-    
+function saveorder(){
+    let postData= getData("#checkOutForm");
+    $.ajax({
+        method: 'post',
+        dataType: 'json',
+        data: postData,
+        url: '/cart/saveorder',
+        success: function(data){
+            if(data['success']){
+                alert(data['message']);
+                document.location = '/catalog';
+            } else {
+                errors = data['errors'];
+                let errorHtml = "<h3>Ошибка:</h3>";
+                for(let i = 0; i < errors.length; ++i){
+                    errorHtml += "<p>" + (i + 1) + ") <span style='color:red;' >" + errors[i] + "</span></p><br />";
+                }
+                $("#errors").html(errorHtml);
+            }
+        }
+    });
 }

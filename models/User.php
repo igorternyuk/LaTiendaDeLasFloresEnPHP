@@ -67,7 +67,7 @@ class User {
     
     public static function checkPhone($phone){
         $pattern = "~([+38]?)0((50)|(63)|(66)|(67)|(68)|(93)|(95)|(96)|(97)|"
-                . "(98)|(99))([0-9]{6})~";
+                . "(98)|(99))([0-9]{7})~";
         return preg_match($pattern, $phone);
     }
     

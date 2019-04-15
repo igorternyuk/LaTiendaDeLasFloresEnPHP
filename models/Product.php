@@ -11,14 +11,14 @@ class Product {
     
     public static function getById($productId){
         $sql = "SELECT * FROM `product` WHERE `id` = :id LIMIT 1";
-        $options = [
+        $params = [
             [
                 'placeholder' => ':id',
                 'value' => $productId,
                 'type' => PDO::PARAM_INT
             ]
         ];
-        $res = Db::executeSelection($sql, $options);
+        $res = Db::executeSelection($sql, $params);
         if($res && is_array($res)){
             return $res[0];
         }
@@ -27,17 +27,17 @@ class Product {
     
     public static function countAllAvailable($letter = null){
         $sql = "SELECT COUNT(`id`) AS total FROM `product` WHERE `available` = 1 ";
-        $options = [];
+        $params = [];
         if($letter != null){
             $sql .= " AND `name` LIKE :name ";
-            array_push($options,
+            array_push($params,
                     [
                         'placeholder' => ':name',
                         'value' => $letter.'%',
                         'type' => PDO::PARAM_STR
                     ]);
         }
-        $res = Db::executeSelection($sql, $options);        
+        $res = Db::executeSelection($sql, $params);        
         return $res ? $res[0]['total'] : 0;
     }
     
@@ -45,7 +45,7 @@ class Product {
         //Utils::debug($letter);
         $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
         $sql = "SELECT * FROM `product` WHERE `available` = 1 ";
-        $options = [
+        $params = [
             [
                 'placeholder' => ':limit',
                 'value' => self::SHOW_BY_DEFAULT,
@@ -59,7 +59,7 @@ class Product {
         ];
         if($letter != null){
             $sql .= " AND `name` LIKE :name ";
-            array_push($options,
+            array_push($params,
                     [
                         'placeholder' => ':name',
                         'value' => lcfirst($letter).'%',
@@ -69,7 +69,7 @@ class Product {
         $sql .= " ORDER BY `id` DESC LIMIT :limit OFFSET :offset";
         //Utils::debug($offset);
         
-       return Db::executeSelection($sql, $options);
+       return Db::executeSelection($sql, $params);
     }
     
     public static function countByCategoryId($categoryId, $letter = null){
@@ -86,7 +86,7 @@ class Product {
         $sql = "SELECT COUNT(`id`) AS total FROM `product` WHERE"
                 . " `available` = 1 AND FIND_IN_SET(`category_id`, :ids) ";
         //Utils::debug($sql);
-        $options = [
+        $params = [
             [
                 'placeholder' => ':ids',
                 'value' => $ids,
@@ -95,7 +95,7 @@ class Product {
         ];
         if($letter != null){
             $sql .= " AND `name` LIKE :name ";
-            array_push($options,
+            array_push($params,
                     [
                         'placeholder' => ':name',
                         'value' => lcfirst($letter).'%',
@@ -103,7 +103,7 @@ class Product {
                     ]);
         }
         
-       $res = Db::executeSelection($sql, $options);
+       $res = Db::executeSelection($sql, $params);
        
        return intval($res ? $res[0]['total'] : 0);
     }
@@ -123,7 +123,7 @@ class Product {
         $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
         $sql = "SELECT * FROM `product` WHERE `available` = 1"
                 . " AND FIND_IN_SET(`category_id`, :ids) ";
-        $options = [
+        $params = [
             [
                 'placeholder' => ':ids',
                 'value' => $ids,
@@ -142,7 +142,7 @@ class Product {
         ];
         if($letter != null){
             $sql .= " AND `name` LIKE :name ";
-            array_push($options,
+            array_push($params,
                     [
                         'placeholder' => ':name',
                         'value' => lcfirst($letter).'%',
@@ -152,7 +152,7 @@ class Product {
         $sql .= " ORDER BY `id` DESC LIMIT :limit OFFSET :offset";
         //Utils::debug($sql);
         
-       return Db::executeSelection($sql, $options);
+       return Db::executeSelection($sql, $params);
     }
     
     public static function getAllRecommended(){
@@ -171,6 +171,39 @@ class Product {
         $sql = "SELECT * FROM `product` WHERE `available` = 1 AND"
                 . " `discount` = 1 ORDER BY `id` DESC LIMIT 6";
         return Db::executeSelection($sql);
+    }
+    
+    public static function getStock($productId){
+        $sql = "SELECT `stock` AS stock FROM `product` WHERE `id` = :product_id";
+        $params = [
+            [
+                'placeholder' => ':product_id',
+                'value' => $productId,
+                'type' => PDO::PARAM_INT
+            ]
+        ];
+        $res = Db::executeSelection($sql, $params);
+        if($res){
+            return $res[0]['stock'];
+        }
+        return 0;
+    }
+    
+    public static function updateStock($productId, $newStock){
+        $sql = "UPDATE `product` SET `stock` = :stock WHERE `id` = :id LIMIT 1";
+        $params = [
+            [
+                'placeholder' => ':stock',
+                'value' => $newStock,
+                'type' => PDO::PARAM_INT
+            ],
+            [
+                'placeholder' => ':id',
+                'value' => $productId,
+                'type' => PDO::PARAM_INT
+            ]
+        ];
+        return Db::executeUpdate($sql, $params);
     }
     
     public static function getImage($productId){

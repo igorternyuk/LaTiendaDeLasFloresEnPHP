@@ -12,6 +12,7 @@ return [
     'cart/remove/([0-9]+)' => 'cart/removeProduct/$1',
     'cart/update/([0-9]+)/([0-9]+)' => 'cart/updateProductCount/$1/$2',
     'cart/checkout' => 'cart/checkout',
+    'cart/saveorder' => 'cart/saveOrder',
     'cart' => 'cart/index',
     'user/showRegisterForm' => 'user/showRegisterForm',
     'user/showLoginForm' => 'user/showLoginForm',
