@@ -45,6 +45,7 @@ class User {
         $sql = "SELECT `id` FROM `user` WHERE `email` = :email"
                 . " AND `password` = :password;";
         $encryptedPassword = md5($password);
+        //Utils::debug($encryptedPassword);
         $options = [
             [
                 'placeholder' => ':email',
@@ -108,38 +109,63 @@ class User {
         return false;
     }
     
-    public static function update($userId, $name, $password = null){
-        $sql = "UPDATE `user` SET `name` = :name ";
-        
-        if($password != null){
-            $query .= " , `password` = :password ";
-        }
-        
-        $query .= " WHERE `id` = :id LIMIT 1;";
-        
+    public static function update($params){
+        $sql = "UPDATE `user` SET ";
         $options = [
             [
-                'placeholder' => ':name',
-                'value' => $name,
-                'type' => PDO::PARAM_STR
-            ],
-            [
                 'placeholder' => ':id',
-                'value' => $userId,
+                'value' => $params['id'],
                 'type' => PDO::PARAM_INT
             ]
         ];
-        
-        if($password != null){
-            $encryptedPassword = md5($password);
+        $paramsToUpdate = [];
+        if($params['name'] != null){
+            array_push($paramsToUpdate, " `name` = :name ");
             array_push($options,
-                [            
+                [
+                    'placeholder' => ':name',
+                    'value' => $params['name'],
+                    'type' => PDO::PARAM_STR
+                ]
+            );
+        }
+        
+        if($params['phone'] != null){
+            array_push($paramsToUpdate, " `phone` = :phone ");
+            array_push($options,
+                [
+                    'placeholder' => ':phone',
+                    'value' => $params['phone'],
+                    'type' => PDO::PARAM_STR
+                ]
+            );
+        }
+        
+        if($params['address'] != null){
+            array_push($paramsToUpdate, " `address` = :address ");
+            array_push($options,
+                [
+                    'placeholder' => ':address',
+                    'value' => $params['address'],
+                    'type' => PDO::PARAM_STR
+                ]
+            );
+        }
+        
+        if($params['password'] != null){
+            array_push($paramsToUpdate, " `password` = :password ");
+            $encryptedPassword = md5($params['password']);
+            array_push($options,
+                [
                     'placeholder' => ':password',
                     'value' => $encryptedPassword,
                     'type' => PDO::PARAM_STR
                 ]
             );
-        }        
+        }
+        $updateString = implode(",", $paramsToUpdate);
+        $sql .= $updateString . " WHERE `id` = :id LIMIT 1;";
+        //Utils::debug($sql);
         return Db::executeUpdate($sql, $options);
     }
     

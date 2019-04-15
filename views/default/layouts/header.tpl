@@ -26,7 +26,7 @@
         <li><a href="/catalog">Каталог</a></li>
         {if isset($loggedUser) }
             <li><a href="/cabinet">Кабинет</a></li>
-            <li><a href="/user/logout">Выход</a></li>
+            <li><a href="#" onclick='logout(); return false;'>Выход</a></li>
         {else}
             <li><a href="/user/showRegisterForm">Регистрация</a></li>
             <li><a href="/user/showLoginForm">Вход</a></li>

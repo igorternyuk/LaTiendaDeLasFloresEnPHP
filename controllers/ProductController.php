@@ -24,10 +24,10 @@ class ProductController extends BaseController {
         $this->smarty->assign('pageTitle', 'Олюсин магазин');
         $this->smarty->assign('currentProduct', $currentProduct);
         $this->smarty->assign('similarProducts', $similarProducts);
-        Utils::loadTemplate($this->smarty, 'header');
+        Utils::loadTemplate($this->smarty, 'layouts/header');
         Utils::loadTemplate($this->smarty, 'product');
         Utils::loadTemplate($this->smarty, 'rightColumn');
-        Utils::loadTemplate($this->smarty, 'footer');
+        Utils::loadTemplate($this->smarty, 'layouts/footer');
         return true;
     }
 }

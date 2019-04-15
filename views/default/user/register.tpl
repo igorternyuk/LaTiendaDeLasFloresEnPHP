@@ -15,33 +15,28 @@
           <form id="registerForm" name="registerForm" href="#" method="post">
             <div class="form_row">
               <label class="contact"><strong>Имя:</strong></label>
-              <input type="text" id="username" name="username" class="contact_input" />
+              <input type="text" id="username" name="username" class="contact_input" required/>
             </div>
             <div class="form_row">
               <label class="contact"><strong>Пароль:</strong></label>
-              <input type="password" id="pwd1" name="pwd1" class="contact_input" />
+              <input type="password" id="pwd1" name="pwd1" class="contact_input"  required/>
             </div>
             <div class="form_row">
               <label class="contact"><strong>Повторите пароль:</strong></label>
-              <input type="password" id="pwd2" name="pwd2" class="contact_input" />
+              <input type="password" id="pwd2" name="pwd2" class="contact_input"  required/>
             </div>
             <div class="form_row">
               <label class="contact"><strong>Email:</strong></label>
-              <input type="email" id="email" name="email" class="contact_input" />
+              <input type="email" id="email" name="email" class="contact_input"  required/>
             </div>
             <div class="form_row">
               <label class="contact"><strong>Телефон:</strong></label>
-              <input type="text" id="userphone" name="userphone" class="contact_input" />
+              <input type="text" id="userphone" name="userphone" class="contact_input"  required/>
             </div>
             <div class="form_row">
               <label class="contact"><strong>Адрес:</strong></label>
-              <input type="text" id="useraddress" name="useraddress" class="contact_input" />
+              <input type="text" id="useraddress" name="useraddress" class="contact_input"  required/>
             </div>
-            <!--div class="form_row">
-              <div class="terms">
-                <input type="checkbox" name="terms" />
-                I agree to the <a href="http://all-free-download.com/free-website-templates/">terms &amp; conditions</a> </div>
-            </div-->
             <div class="form_row">
                 <input type="button" class="register" value="ОК" onclick="register(); return false;"/>
             </div>

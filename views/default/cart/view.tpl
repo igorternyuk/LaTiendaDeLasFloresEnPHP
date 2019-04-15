@@ -62,7 +62,7 @@
             <a href="/catalog" class="continue">
                 &lt; Назад
             </a>
-          <a href="/order/checkout" class="checkout">
+          <a href="/cart/checkout" class="checkout" >
               Заказать &gt;
           </a>
         {else}

@@ -46,23 +46,43 @@ function register(){
 }
 
 function login(){
-    let postData = getData("#registerForm");
-    console.log("registerFormData:");
+    let postData = getData("#loginForm");
+    console.log("loginFormData:");
     console.log(postData);
     $.ajax({
         method: 'post',
         dataType: 'json',
         data: postData,
-        url: '/user/register',
+        url: '/user/login',
         success: function(data){
-            console.log("Data received");
-            console.log(data);
+            if(data['success']){
+                document.location = '/cabinet';
+            } else {
+                errors = data['errors'];
+                let errorHtml = "<h3>Ошибка:</h3>";
+                for(let i = 0; i < errors.length; ++i){
+                    errorHtml += "<p>" + (i + 1) + ") <span style='color:red;' >" + errors[i] + "</span></p><br />";
+                }
+                $("#errors").html(errorHtml);
+            }
         }
     });
 }
 
 function logout(){
-    
+    let data = {};
+    $.ajax({
+        type: 'POST',
+        async: false,
+        url: "/user/logout",
+        data: data,
+        dataType: 'json',
+        success: function(data){
+            if(data['success']){
+                document.location = '/home';
+            }
+        }
+    });
 }
 
 function addToCart(productId){
@@ -124,4 +144,28 @@ function updateProductCount(productId){
     });
 }
 
+function updateUser(){
+    let postData= getData("#userEditForm");
+    $.ajax({
+        method: 'post',
+        dataType: 'json',
+        data: postData,
+        url: '/user/update',
+        success: function(data){
+            if(data['success']){
+                document.location = '/cabinet';
+            } else {
+                errors = data['errors'];
+                let errorHtml = "<h3>Ошибка:</h3>";
+                for(let i = 0; i < errors.length; ++i){
+                    errorHtml += "<p>" + (i + 1) + ") <span style='color:red;' >" + errors[i] + "</span></p><br />";
+                }
+                $("#errors").html(errorHtml);
+            }
+        }
+    });
+}
 
+function checkout(){
+    
+}

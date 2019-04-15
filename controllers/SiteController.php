@@ -29,10 +29,10 @@ class SiteController extends BaseController{
         $this->smarty->assign('newProducts', $newProducts);
         $this->smarty->assign('recommendedProducts', $recommendedProducts);
     
-        Utils::loadTemplate($this->smarty, 'header');
+        Utils::loadTemplate($this->smarty, 'layouts/header');
         Utils::loadTemplate($this->smarty, 'index');
         Utils::loadTemplate($this->smarty, 'rightColumn');
-        Utils::loadTemplate($this->smarty, 'footer');
+        Utils::loadTemplate($this->smarty, 'layouts/footer');
         return true;
     }
 }

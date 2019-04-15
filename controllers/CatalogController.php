@@ -32,10 +32,10 @@ class CatalogController extends BaseController {
         $pagination = $paginator->getHtml();
         $this->smarty->assign('pagination', $pagination);
         
-        Utils::loadTemplate($this->smarty, 'header');
+        Utils::loadTemplate($this->smarty, 'layouts/header');
         Utils::loadTemplate($this->smarty, 'catalog');
         Utils::loadTemplate($this->smarty, 'rightColumn');
-        Utils::loadTemplate($this->smarty, 'footer');
+        Utils::loadTemplate($this->smarty, 'layouts/footer');
         return true;
     }
 
@@ -66,10 +66,10 @@ class CatalogController extends BaseController {
         $pagination = $paginator->getHtml();
         $this->smarty->assign('pagination', $pagination);
     
-        Utils::loadTemplate($this->smarty, 'header');
+        Utils::loadTemplate($this->smarty, 'layouts/header');
         Utils::loadTemplate($this->smarty, 'category');
         Utils::loadTemplate($this->smarty, 'rightColumn');
-        Utils::loadTemplate($this->smarty, 'footer');
+        Utils::loadTemplate($this->smarty, 'layouts/footer');
         return true;
     }
 }

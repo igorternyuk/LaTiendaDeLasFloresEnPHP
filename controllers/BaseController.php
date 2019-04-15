@@ -16,7 +16,12 @@ class BaseController {
         $this->loadCartInfo();
         $this->loadAllCategories();
         $this->loadProductsWithDiscount();
-        $this->loadLetterReferences();     
+        $this->loadLetterReferences();
+        $loggeduserId = User::getLoggedUserId();
+        if($loggeduserId){
+            $loggedUser = User::getById($loggeduserId);
+            $this->smarty->assign('loggedUser', $loggedUser);
+        }
     }
     
     protected function loadCartInfo(){
