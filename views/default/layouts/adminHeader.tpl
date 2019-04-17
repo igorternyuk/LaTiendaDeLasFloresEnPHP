@@ -13,6 +13,7 @@
 <script src="{$templateWebPath}js/java.js" type="text/javascript" ></script>
 <script src="/js/query-3.3.1.min.js" type="text/javascript" ></script>
 <script src="/js/main.js" type="text/javascript" ></script>
+<script src="/js/admin.js" type="text/javascript" ></script>
 
 </head>
 <body>

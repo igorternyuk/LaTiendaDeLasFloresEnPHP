@@ -1,11 +1,8 @@
 function getData(objForm){
-    console.log("js - getting data from register form");
     var data = {};
-    console.log($(objForm).children('input textarea select'));  
     $('input, select, textarea', $(objForm)).each(function(){
         if(this.name && this.name !== ''){
             data[this.name] = this.value;
-            console.log("data[" + this.name + "]=" + this.value);
         }
     });
 

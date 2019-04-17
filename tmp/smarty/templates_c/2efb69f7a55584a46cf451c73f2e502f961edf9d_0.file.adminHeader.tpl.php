@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-04-17 13:52:17
+/* Smarty version 3.1.33, created on 2019-04-17 15:20:42
   from '/opt/lampp/htdocs/flower-shop.local/views/default/layouts/adminHeader.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cb71371c1c8b1_51874727',
+  'unifunc' => 'content_5cb7282a06eff7_56501024',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2efb69f7a55584a46cf451c73f2e502f961edf9d' => 
     array (
       0 => '/opt/lampp/htdocs/flower-shop.local/views/default/layouts/adminHeader.tpl',
-      1 => 1555501934,
+      1 => 1555505367,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5cb71371c1c8b1_51874727 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cb7282a06eff7_56501024 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -54,6 +54,9 @@ js/java.js" type="text/javascript" ><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
  src="/js/main.js" type="text/javascript" ><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="/js/admin.js" type="text/javascript" ><?php echo '</script'; ?>
 >
 
 </head>

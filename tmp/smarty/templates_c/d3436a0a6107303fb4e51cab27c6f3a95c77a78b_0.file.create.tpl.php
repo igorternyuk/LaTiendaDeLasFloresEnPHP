@@ -1,4 +1,27 @@
-<div class="center_content">
+<?php
+/* Smarty version 3.1.33, created on 2019-04-17 15:58:49
+  from '/opt/lampp/htdocs/flower-shop.local/views/default/admin/categories/create.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.33',
+  'unifunc' => 'content_5cb731193093a8_86820648',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'd3436a0a6107303fb4e51cab27c6f3a95c77a78b' => 
+    array (
+      0 => '/opt/lampp/htdocs/flower-shop.local/views/default/admin/categories/create.tpl',
+      1 => 1555509473,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5cb731193093a8_86820648 (Smarty_Internal_Template $_smarty_tpl) {
+?><div class="center_content">
     <div class="left_content">
       <div class="title"><span class="title_icon">
               <img src="images/bullet1.gif" alt="" />
@@ -19,9 +42,18 @@
               <option value='0' selected>
                   Главная категория
               </option>  
-              {foreach $allMainCategories as $category}
-                  <option value='{$category['id']}' >{$category['name']}</option>
-              {/foreach}
+              <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['allMainCategories']->value, 'category');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['category']->value) {
+?>
+                  <option value='<?php echo $_smarty_tpl->tpl_vars['category']->value['id'];?>
+' ><?php echo $_smarty_tpl->tpl_vars['category']->value['name'];?>
+</option>
+              <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
               </select>
             </div>
               
@@ -42,4 +74,5 @@
         </div>
       </div>
       <div class="clear"></div>
-    </div>
+    </div><?php }
+}
