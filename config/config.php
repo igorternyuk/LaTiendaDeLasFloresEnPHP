@@ -8,6 +8,14 @@ define('TemplateWebPath',"/templates/{$template}/");
 define('ROOT', $_SERVER['DOCUMENT_ROOT']);
 define('PathToProductImages', "/upload/images/product/");
 define('NoImage', "no-image.jpg");
+define('OrderStatus',
+        [
+            0 => 'Новый заказ',
+            1 => 'В обработке',
+            2 => 'Доставляется',
+            3 => 'Закрыт'
+        ]
+        );
 include_once '../components/Utils.php';
 require '../library/Smarty/libs/Smarty.class.php';
 $smarty = new Smarty();

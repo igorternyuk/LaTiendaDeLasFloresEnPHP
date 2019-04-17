@@ -14,6 +14,7 @@ class UserController extends BaseController {
     public function actionShowRegisterForm(){
         parent::loadCommon();
         $this->smarty->assign('pageTitle', 'Регистрация');
+        $this->smarty->assign('registerPageActive', true);
         Utils::loadTemplate($this->smarty, 'layouts/header');
         Utils::loadTemplate($this->smarty, 'user/register');
         Utils::loadTemplate($this->smarty, 'rightColumn');
@@ -24,6 +25,7 @@ class UserController extends BaseController {
     public function actionShowLoginForm(){
         parent::loadCommon();
         $this->smarty->assign('pageTitle', 'Авторизация');
+        $this->smarty->assign('loginPageActive', true);
         Utils::loadTemplate($this->smarty, 'layouts/header');
         Utils::loadTemplate($this->smarty, 'user/login');
         Utils::loadTemplate($this->smarty, 'rightColumn');

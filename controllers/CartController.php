@@ -68,6 +68,7 @@ class CartController extends BaseController {
         $res['errors'] = $errors;
         
         if(Order::saveNew($params)){
+            Cart::clear();
             $res['success'] = true;
             $res['message'] = "Ваш заказ успешно сохранен!";
         } else {

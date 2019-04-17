@@ -7,14 +7,15 @@
  */
 class Category {
     public static function getAllMainCategories(){
-        $db = Db::getConnection();
         $sql = "SELECT * FROM `category` WHERE `parent_id` = 0 AND"
                 . " `status` = 1 ORDER by `sort_order` DESC";
-        $statement = $db->prepare($sql);
-        if($statement->execute()){
-            return $statement->fetchAll(PDO::FETCH_ASSOC);
-        }
-        return false;        
+        return Db::executeSelection($sql);       
+    }
+    
+    public static function getAllSubCategories(){
+        $sql = "SELECT * FROM `category` WHERE NOT `parent_id` = 0 AND"
+                . " `status` = 1 ORDER by `sort_order` DESC";
+        return Db::executeSelection($sql);       
     }
     
     public static function getAllMainCategoriesWithChildren(){
@@ -35,15 +36,16 @@ class Category {
     }
     
     public static function getById($categoryId){
-        $db = Db::getConnection();
         $sql = "SELECT * FROM `category` WHERE `status` = 1"
                 . " AND `id` = :id LIMIT 1";
-        $statement = $db->prepare($sql);
-        $statement->bindParam(':id', $categoryId, PDO::PARAM_INT);
-        if($statement->execute()){
-            return $statement->fetch(PDO::FETCH_ASSOC);
-        }
-        return false;
+        $params = [
+            [
+                'placeholder' => ':id',
+                'value' => $categoryId,
+                'type' => PDO::PARAM_INT
+            ]
+        ];
+        return Db::executeSelection($sql, $params);
     }
     
     public static function checkIfMain($categoryId){

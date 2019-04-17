@@ -188,3 +188,13 @@ function saveorder(){
         }
     });
 }
+
+function toggleOrderProductsView(orderId){
+    if($("#orderProducts_" + orderId).is(":visible")){
+        $("#orderProducts_" + orderId).hide();
+        $("#toggleProducts_" + orderId).html("Показать товары");
+    } else {
+        $("#orderProducts_" + orderId).show();
+        $("#toggleProducts_" + orderId).html("Скрыть товары");
+    }
+}

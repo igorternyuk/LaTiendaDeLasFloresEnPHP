@@ -28,6 +28,7 @@ class SiteController extends BaseController{
         $this->smarty->assign('pageTitle', 'Олюсин магазин');
         $this->smarty->assign('newProducts', $newProducts);
         $this->smarty->assign('recommendedProducts', $recommendedProducts);
+        $this->smarty->assign('mainPageActive', true);
     
         Utils::loadTemplate($this->smarty, 'layouts/header');
         Utils::loadTemplate($this->smarty, 'index');

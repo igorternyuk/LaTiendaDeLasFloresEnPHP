@@ -31,7 +31,7 @@ class CatalogController extends BaseController {
                 'page-');
         $pagination = $paginator->getHtml();
         $this->smarty->assign('pagination', $pagination);
-        
+        $this->smarty->assign('catalogPageActive', true);
         Utils::loadTemplate($this->smarty, 'layouts/header');
         Utils::loadTemplate($this->smarty, 'catalog');
         Utils::loadTemplate($this->smarty, 'rightColumn');
@@ -65,7 +65,7 @@ class CatalogController extends BaseController {
                 'page-');
         $pagination = $paginator->getHtml();
         $this->smarty->assign('pagination', $pagination);
-    
+        $this->smarty->assign('catalogPageActive', true);
         Utils::loadTemplate($this->smarty, 'layouts/header');
         Utils::loadTemplate($this->smarty, 'category');
         Utils::loadTemplate($this->smarty, 'rightColumn');

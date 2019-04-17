@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-04-15 11:24:27
+/* Smarty version 3.1.33, created on 2019-04-17 12:55:27
   from '/opt/lampp/htdocs/flower-shop.local/views/default/cabinet/edit.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cb44dcb322972_54689537',
+  'unifunc' => 'content_5cb7061fb79a12_80456949',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a7c524fe5d0f8f6deee4368a75930c55a4f1b7d5' => 
     array (
       0 => '/opt/lampp/htdocs/flower-shop.local/views/default/cabinet/edit.tpl',
-      1 => 1555318674,
+      1 => 1555332778,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5cb44dcb322972_54689537 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cb7061fb79a12_80456949 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="center_content">
     <div class="left_content">
         <div class="crumb_nav">
@@ -59,7 +59,7 @@ function content_5cb44dcb322972_54689537 (Smarty_Internal_Template $_smarty_tpl)
             <div class="form_row">
               <label class="contact"><strong>Email:</strong></label>
               <input type="email" id="email" name="email" class="contact_input" value="<?php if (isset($_smarty_tpl->tpl_vars['loggedUser']->value)) {?> <?php echo $_smarty_tpl->tpl_vars['loggedUser']->value['email'];?>
- <?php }?>" />
+ <?php }?>" readonly/>
             </div>
             <div class="form_row">
               <label class="contact"><strong>Телефон:</strong></label>

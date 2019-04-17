@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'admin' => 'admin/index',
     'product/([0-9]+)' => 'product/view/$1',    
     'catalog/letter-([a-z]+)/page-([0-9]+)' => 'catalog/index/$2/$1',
     'catalog/page-([0-9]+)' => 'catalog/index/$1',
@@ -20,8 +21,9 @@ return [
     'user/register' => 'user/register',
     'user/login' => 'user/login',
     'user/logout' => 'user/logout',
-    'cabinet/edit' => 'cabinet/edit',
+    'cabinet/history/page-([0-9]+)' => 'cabinet/history/$1',
     'cabinet/history' => 'cabinet/history',
+    'cabinet/edit' => 'cabinet/edit',
     'cabinet' => 'cabinet/index',
     'home' => 'site/index',
     '' => 'site/index'

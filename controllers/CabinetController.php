@@ -31,9 +31,26 @@ class CabinetController extends BaseController {
         return true;
     }
     
-    public static function actionHistory(){
+    public static function actionHistory($page = 1){
         parent::loadCommon();
+        $loggedUserId = User::getLoggedUserId();
+        $ordersTotal = Order::countByUserId($loggedUserId);
+        $userOrders = Order::getByUserId($loggedUserId, $page);
+        foreach($userOrders as &$order){
+            $orderItems = OrderItem::getAllOrderItemsByOrderId($order['id']);
+            $order['items'] = $orderItems;
+            $order['status_description'] = Order::getStatusDescription($order['status']);
+        }
+        
+        //Utils::debug($userOrders);
+        
+        $paginator = new Paginator($page, $ordersTotal, Order::SHOW_BY_DEFAULT,
+                'page-');
+        $pagination = $paginator->getHtml();
+        $this->smarty->assign('pagination', $pagination);
+        
         $this->smarty->assign('pageTitle', 'История заказов');
+        $this->smarty->assign('userOrders', $userOrders);
         //Aqui voy a tener que rescatar todos los ordenes del usuario activo
         Utils::loadTemplate($this->smarty, 'layouts/header');
         Utils::loadTemplate($this->smarty, 'cabinet/history');

@@ -10,70 +10,69 @@
         <div class="title">
           <span class="title_icon"><img src="images/bullet1.gif" alt="" />
           </span>
-          Корзина
+          Заказы
       </div>
         
       <div class="feat_prod_box_details">
         {if count($userOrders) > 0}
         <table class="cart_table">
           <tr class="cart_title">
-            <th>ID товара</th>
-            <th>Название</th>
-            <!--th>Код товара</th-->
-            <th>Изображение</th>
-            <th>Цена за единицу</th>
-            <th>Количество</th>
-            <th>Итого</th>
+            <th>ID</th>
+            <th>Дата оформления</th>
+            <th>Дата изменения</th>
+            <th>Дата оплаты</th>
+            <th>Имя клиента</th>
+            <th>Сумма</th>
+            <th>Статус</th>
             <th>Дейтсвие</th>
           </tr>
-          {foreach $productsInCart as $product}
-            <tr id="productRow_{$product['id']}">
-              <td>{$product['id']}</td>
-              <td><a href="/product/{$product['id']}">{$product['name']}</a></td>
-              <!--td>{$product['code']}</td-->
+          {foreach $userOrders as $order}
+            <tr>
+              <td>{$order['id']}</td>
+              <td>{$order['date_created']}</td>
+              <td>{$order['date_updated']}</td>
+              <td>{$order['date_payment']}</td>
+              <td>{$order['username']}</td>
+              <td>{$order['total']} грн.</td>
+              <td>{$order['status_description']}</td>
               <td>
-                  <a href="/product/{$product['id']}">
-                      <img src="{$product['image']}" width='85' alt="" border="0" class="cart_thumb" />
+                  <a id="toggleProducts_{$order['id']}" href='#' onclick="toggleOrderProductsView({$order['id']}); return false;">
+                      Показать товары
                   </a>
-              </td>              
-              <td>{$product['price']}</td>
-              <td width='60' >
-                  <input width='50' id="productCount_{$product['id']}"
-                         name="productCount_{$product['id']}" type='number' min=0 max='{$product['stock']}'
-                         value="{$product['count']}"
-                                    onchange="updateProductCount({$product['id']});"
-                  >
-                  
               </td>
-              <td>
-                  <span  id="subtotal_{$product['id']}" name="subtotal_{$product['id']}">
-                      {$product['subtotal']}
-                  </span> грн.
-              </td>
-              <td><a href='#' onclick="removeFromCart({$product['id']}); return false;">Удалить</a></td>
+            </tr>
+            <tr id="orderProducts_{$order['id']}" style="display: none;">
+                <td colspan='7'>
+                    <table>
+                        <tr>
+                            <th>№</th>
+                            <th>ID товара</th>
+                            <th>Название</th>
+                            <th>Код товара</th>
+                            <th>Цена за единицу</th>
+                            <th>Количество</th>
+                            <th>Итого</th>
+                        </tr>
+                    {foreach $order['items'] as $item name=products}
+                        <tr>
+                            <td>{$smarty.foreach.products.iteration}</td>
+                            <td>{$item['product_id']}</td>
+                            <td><a href='/product/{$item['product_id']}'>{$item['product_name']}</a></td>
+                            <td>{$item['product_code']}</td>
+                            <td>{$item['product_price']} грн.</td>
+                            <td>{$item['count']}</td>
+                            <td>{$item['subtotal']} грн.</td>
+                        </tr>
+                    {/foreach}
+                    </table>
+                </td>
             </tr>
           {/foreach}
-          
-          <tr>
-            <td colspan="6" class="cart_total">
-                <span class="red">Сумма заказа:</span>
-            </td>
-            <td>
-                <span id="cartTotalSumInTable" name='cartTotalSumInTable'>
-                    {$cartTotalSum}
-                </span> грн.
-            </td>
-          </tr>
-        </table>
-            <a href="/catalog" class="continue">
-                &lt; Назад
-            </a>
-          <a href="/order/checkout" class="checkout">
-              Заказать &gt;
-          </a>
-        {else}
-            <h3>Ваша корзина пуста.</h3>
-        {/if}
+          </table>
+          <span>{$pagination}</span>
+          {else}
+              <h4>Нет заказов</h4>
+          {/if}
           
       </div>
       <div class="clear"></div>
