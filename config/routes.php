@@ -4,6 +4,9 @@ return [
     'admin/category/page-([0-9]+)' => 'adminCategory/index/$1',
     'admin/category/create' => 'adminCategory/create',
     'admin/category/edit' => 'adminCategory/edit',
+    'admin/order/page-([0-9]+)' => 'adminOrder/index/$1',
+    'admin/order/view/([0-9]+)' => 'adminOrder/view/$1',
+    'admin/order/update/([0-9]+)' => 'adminOrder/update/$1',
     'admin' => 'admin/index',
     'product/([0-9]+)' => 'product/view/$1',    
     'catalog/letter-([a-z]+)/page-([0-9]+)' => 'catalog/index/$2/$1',
@@ -31,6 +34,8 @@ return [
     'category/add' => 'category/add',
     'category/edit/([0-9]+)' => 'category/update/$1',
     'category/remove/([0-9]+)' => 'category/remove/$1',
+    'category/update/([0-9]+)' => 'order/update/$1',
+    'order/update/([0-9]+)' => 'order/update/$1',
     'home' => 'site/index',
     '' => 'site/index'
 ];

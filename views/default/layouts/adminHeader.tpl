@@ -27,6 +27,9 @@
         <li {if isset($catalogPageActive)}class="selected"{/if}><a href="/catalog">Каталог</a></li>
         {if isset($loggedUser) }
             <li {if isset($cabinetPageActive)}class="selected"{/if}><a href="/cabinet">Кабинет</a></li>
+            {if isset($adminLogged)}
+                <li {if isset($adminPageActive)}class="selected"{/if} ><a href="/admin">Управление</a></li>
+            {/if}
             <li><a href="#" onclick='logout(); return false;'>Выход</a></li>
         {else}
             <li {if isset($registrationPageActive)}class="selected"{/if}><a href="/user/showRegisterForm">Регистрация</a></li>
@@ -34,7 +37,7 @@
         {/if}
         <li {if isset($abountPageActive)}class="selected"{/if}><a href="/about">О нас</a></li>
         <li {if isset($contactPageActive)}class="selected"{/if}><a href="/contacts">Контакты</a></li>
-        <li {if isset($adminPageActive)}class="selected"{/if}><a href="/admin">Управление</a></li>
+        
       </ul>
     </div>
   </div>

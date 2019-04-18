@@ -44,7 +44,9 @@ class Product {
     public static function getLatest(int $page = 1, $letter = null){
         //Utils::debug($letter);
         $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
-        $sql = "SELECT * FROM `product` WHERE `available` = 1 ";
+        $sql = "SELECT p.*,c.name AS category_name FROM `product` AS p"
+                . " LEFT JOIN `category` AS c ON p.`category_id` = c.`id`"
+                . " WHERE p.`available` = 1 ";
         $params = [
             [
                 'placeholder' => ':limit',
@@ -58,7 +60,7 @@ class Product {
             ]
         ];
         if($letter != null){
-            $sql .= " AND `name` LIKE :name ";
+            $sql .= " AND p.`name` LIKE :name ";
             array_push($params,
                     [
                         'placeholder' => ':name',
@@ -66,7 +68,7 @@ class Product {
                         'type' => PDO::PARAM_STR
                     ]);
         }
-        $sql .= " ORDER BY `id` DESC LIMIT :limit OFFSET :offset";
+        $sql .= " ORDER BY p.`id` DESC LIMIT :limit OFFSET :offset";
         //Utils::debug($offset);
         
        return Db::executeSelection($sql, $params);
@@ -106,6 +108,51 @@ class Product {
        $res = Db::executeSelection($sql, $params);
        
        return intval($res ? $res[0]['total'] : 0);
+    }
+    
+    public static function countAll($filter = null){
+        $sql = "SELECT COUNT(`id`) AS total FROM `product` ";
+        $params = [];
+        if($filter != null){
+            $sql .= " WHERE `name` LIKE :name ";
+            array_push($params,
+                    [
+                        'placeholder' => ':name',
+                        'value' => '%'.$filter.'%',
+                        'type' => PDO::PARAM_STR
+                    ]);
+        }
+        $res = Db::executeSelection($sql, $params);        
+        return $res ? $res[0]['total'] : 0;
+    }
+    
+    public static function getAll($page = 1, $filter = null){
+        $sql = "SELECT * FROM `product` ";
+        $offset = ($page - 1) * Product::SHOW_BY_DEFAULT;
+        $params = [
+            [
+                'placeholder' => ':limit',
+                'value' => Product::SHOW_BY_DEFAULT,
+                'type' => PDO::PARAM_INT
+            ],
+            [
+                'placeholder' => ':offset',
+                'value' => $offset,
+                'type' => PDO::PARAM_INT
+            ]
+        ];
+        
+        if($filter != null){
+            $sql .= " WHERE `name` LIKE :name ";
+            array_push($params,
+                    [
+                        'placeholder' => ':name',
+                        'value' => '%'.$filter.'%',
+                        'type' => PDO::PARAM_STR
+                    ]);
+        }
+        $sql .= " ORDER BY `id` LIMIT :limit OFFSET :offset ";
+        return Db::executeSelection($sql, $params);        
     }
     
     public static function getByCategoryId($categoryId, $page = 1,

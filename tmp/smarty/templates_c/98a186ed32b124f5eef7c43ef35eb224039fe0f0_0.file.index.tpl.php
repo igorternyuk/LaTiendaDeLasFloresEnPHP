@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-04-17 15:31:40
+/* Smarty version 3.1.33, created on 2019-04-17 16:10:19
   from '/opt/lampp/htdocs/flower-shop.local/views/default/admin/categories/index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cb72abc3066c8_69355170',
+  'unifunc' => 'content_5cb733cb53a529_57720238',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '98a186ed32b124f5eef7c43ef35eb224039fe0f0' => 
     array (
       0 => '/opt/lampp/htdocs/flower-shop.local/views/default/admin/categories/index.tpl',
-      1 => 1555507884,
+      1 => 1555510216,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5cb72abc3066c8_69355170 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cb733cb53a529_57720238 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="center_content">
     <div class="left_content">
         <div class="crumb_nav">
@@ -66,8 +66,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['category']->value) {
                   </a>
               </td>              
               <td>
-                  <a href="#"  onclick="if(confirm('Вы действительно хотите удалить данную катгорию?')) { removeCategory()removeCategory(<?php echo $_smarty_tpl->tpl_vars['category']->value['id'];?>
-) }; return false;">
+                  <a href="#"  onclick="if(confirm('Вы действительно хотите удалить данную катгорию?')) { removeCategory(<?php echo $_smarty_tpl->tpl_vars['category']->value['id'];?>
+); }; return false;">
                       Удалить
                   </a>
               </td>

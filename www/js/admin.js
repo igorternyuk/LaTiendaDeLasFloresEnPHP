@@ -43,7 +43,6 @@ function addCategory(){
 
 function editCategory(id){
     let postData = getData("#categoryEditForm");
-    console.log("registerFormData:");
     console.log(postData);
     $.ajax({
         method: 'post',
@@ -71,6 +70,23 @@ function removeCategory(id){
             alert(data['message']);
             if(data['success']){
                 document.location = '/admin/category/page-1';
+            } 
+        }
+    });
+}
+
+function updateOrder(id){
+    let postData = getData("#editOrderForm");
+    $.ajax({
+        method: 'post',
+        dataType: 'json',
+        data: postData,
+        url: '/order/update/' + id,
+        success: function(data){
+            alert(data['message']);
+            if(data['success']){
+                clearForm("#orderEditForm");
+                document.location = '/admin/order/page-1';
             } 
         }
     });

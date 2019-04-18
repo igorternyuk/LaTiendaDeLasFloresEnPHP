@@ -211,7 +211,7 @@ class Category {
         return $ids;
     }
     
-    public static function getFullName($productId){
+    public static function getFullName($categoryId){
         $category = Category::getById($categoryId);
         $name = $category['name'];
         if(!Category::checkIfMain($categoryId)){

@@ -89,8 +89,8 @@ class Order {
     
     public static function update($params){
         $sql = "UPDATE `order` SET `date_updated` = NOW(),"
-                . "`date_payment = :date_payment, `status` = :status"
-                . " WHERE user_id = :user_id LIMIT 1";
+                . "`date_payment` = :date_payment, `status` = :status"
+                . " WHERE `id` = :order_id LIMIT 1";
         $options = [            
             [
                 'placeholder' => ':date_payment',
@@ -103,8 +103,8 @@ class Order {
                 'type' => PDO::PARAM_INT
             ],
             [
-                'placeholder' => ':user_id',
-                'value' => $params['user_id'],
+                'placeholder' => ':order_id',
+                'value' => $params['order_id'],
                 'type' => PDO::PARAM_INT
             ]                
         ];
@@ -153,7 +153,11 @@ class Order {
                 'type' => PDO::PARAM_INT
             ]
         ];
-        return Db::executeSelection($sql, $options);
+        $res = Db::executeSelection($sql, $options);
+        if($res){
+            return $res[0];
+        }
+        return 0;
     }
     
     public static function countByUserId($userId){

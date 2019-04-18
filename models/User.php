@@ -200,6 +200,15 @@ class User {
         Utils::redirect("/user/login");
     }
     
+    public static function ensureAdmin(){
+        //User::checkIfLogged();
+        $loggedUserId = User::getLoggedUserId();
+        if(!$loggedUserId || !User::checkIfAdmin($loggedUserId)){
+            die("Недостаточно прав");
+        }
+    }
+
+
     public static function getLoggedUserId(){
         return (isset($_SESSION['user'])) ? $_SESSION['user'] : false;
     }
@@ -237,7 +246,7 @@ class User {
         $res = Db::executeSelection($sql, $options);
         if($res){
             $userRole = $res[0];
-            return $userRole['role_id'] == 2 && $userRole['name'] == 'admin';
+            return $userRole['role_id'] == 1 && $userRole['name'] == 'admin';
         }
         return false;
     }

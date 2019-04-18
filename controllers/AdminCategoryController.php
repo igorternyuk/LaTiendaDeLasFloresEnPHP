@@ -11,6 +11,7 @@ class AdminCategoryController extends AdminBaseController{
     }
     
     public function actionIndex($page = 1){
+        User::ensureAdmin();
         parent::loadCommon();
         $categories = Category::getForPage($page);
         
@@ -30,8 +31,8 @@ class AdminCategoryController extends AdminBaseController{
     }
     
     public function actionCreate(){
-        parent::loadCommon();
-        
+        User::ensureAdmin();
+        parent::loadCommon();        
         $this->smarty->assign('pageTitle', 'Добавление категории');
         $this->smarty->assign('adminPageActive', true);
         Utils::loadTemplate($this->smarty, 'layouts/adminHeader');
@@ -42,9 +43,9 @@ class AdminCategoryController extends AdminBaseController{
     }
     
     public function actionEdit($categoryId){
+        User::ensureAdmin();
         parent::loadCommon();
         $currentCategory = Category::getById($categoryId);
-       // Utils::debug($currentCategory);
         $this->smarty->assign('currentCategory', $currentCategory);
         $this->smarty->assign('pageTitle', 'Добавление категории');
         $this->smarty->assign('adminPageActive', true);

@@ -12,6 +12,7 @@ class CabinetController extends BaseController {
     }
     
     public function actionIndex(){
+        User::checkIfLogged();
         parent::loadCommon();
         $this->smarty->assign('pageTitle', 'Кабинет');
         Utils::loadTemplate($this->smarty, 'layouts/header');
@@ -22,6 +23,7 @@ class CabinetController extends BaseController {
     }
     
     public static function actionEdit(){
+        User::checkIfLogged();
         parent::loadCommon();
         $this->smarty->assign('pageTitle', 'Редактирование профиля');
         Utils::loadTemplate($this->smarty, 'layouts/header');
@@ -32,6 +34,7 @@ class CabinetController extends BaseController {
     }
     
     public static function actionHistory($page = 1){
+        User::checkIfLogged();
         parent::loadCommon();
         $loggedUserId = User::getLoggedUserId();
         $ordersTotal = Order::countByUserId($loggedUserId);
@@ -51,7 +54,6 @@ class CabinetController extends BaseController {
         
         $this->smarty->assign('pageTitle', 'История заказов');
         $this->smarty->assign('userOrders', $userOrders);
-        //Aqui voy a tener que rescatar todos los ordenes del usuario activo
         Utils::loadTemplate($this->smarty, 'layouts/header');
         Utils::loadTemplate($this->smarty, 'cabinet/history');
         Utils::loadTemplate($this->smarty, 'rightColumn');

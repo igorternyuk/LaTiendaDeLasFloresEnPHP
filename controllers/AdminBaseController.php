@@ -23,10 +23,13 @@ class AdminBaseController {
     
     protected function loadCommon(){
         $this->loadAllCategories();
-        $loggeduserId = User::getLoggedUserId();
-        if($loggeduserId){
-            $loggedUser = User::getById($loggeduserId);
+        $loggedUserId = User::getLoggedUserId();
+        if($loggedUserId){
+            $loggedUser = User::getById($loggedUserId);
             $this->smarty->assign('loggedUser', $loggedUser);
+            if(User::checkIfAdmin($loggedUserId)){
+                $this->smarty->assign('adminLogged', true);
+            }
         }
         $this->loadProductsWithDiscount();
     }

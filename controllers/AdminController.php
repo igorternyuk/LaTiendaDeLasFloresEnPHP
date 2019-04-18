@@ -8,6 +8,7 @@
 class AdminController extends AdminBaseController{
     
     public function actionIndex(){
+        User::ensureAdmin();
         parent::loadCommon();
         $this->smarty->assign('pageTitle', 'Редактирование профиля');
         $this->smarty->assign('adminPageActive', true);

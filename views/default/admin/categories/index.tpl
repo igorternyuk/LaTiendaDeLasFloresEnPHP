@@ -34,7 +34,7 @@
                   </a>
               </td>              
               <td>
-                  <a href="#"  onclick="if(confirm('Вы действительно хотите удалить данную катгорию?')) { removeCategory()removeCategory({$category['id']}) }; return false;">
+                  <a href="#"  onclick="if(confirm('Вы действительно хотите удалить данную катгорию?')) { removeCategory({$category['id']}); }; return false;">
                       Удалить
                   </a>
               </td>
