@@ -82,7 +82,12 @@ class Paginator {
            }
        }
        //echo "start = ".$start." end = ".$end;
-       //Utils::debug(['start' => $start, 'end' => $end,'pageTotal' => $this->pageTotal]);
+       /*Utils::debug(['start' => $start,
+           'end' => $end,
+           'pageTotal' => $this->pageTotal,
+           'itemsTotal' => $this->itemsTotal,
+           'itemsPerPage' => $this->itemsPerPage
+        ]);*/
        return ['start' => $start, 'end' => $end];
    }
    

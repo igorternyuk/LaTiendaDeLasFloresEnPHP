@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-04-13 10:39:57
+/* Smarty version 3.1.33, created on 2019-04-19 16:12:46
   from '/opt/lampp/htdocs/flower-shop.local/views/default/product.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cb1a05d3c3fd2_12558476',
+  'unifunc' => 'content_5cb9d75ee6a522_96298389',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '07ac3815799a8deb139541b6d7afa7ca72a8705f' => 
     array (
       0 => '/opt/lampp/htdocs/flower-shop.local/views/default/product.tpl',
-      1 => 1555144770,
+      1 => 1555682125,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5cb1a05d3c3fd2_12558476 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cb9d75ee6a522_96298389 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="center_content">
     <div class="left_content">
       <div class="crumb_nav"> <a href="/">Главная</a> &gt;&gt; <?php echo $_smarty_tpl->tpl_vars['currentProduct']->value['name'];?>
@@ -72,7 +72,8 @@ images/bullet1.gif" alt="" />
             <?php }?>
             <?php if ($_smarty_tpl->tpl_vars['currentProduct']->value['discount']) {?>
                 <div class="price">
-                    <strong>Есть скидка</strong>
+                    <strong>Есть скидка <?php echo $_smarty_tpl->tpl_vars['currentProduct']->value['discount'];?>
+%</strong>
                 </div>
             <?php }?>
             <div class="price">

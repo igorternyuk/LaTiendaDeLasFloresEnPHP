@@ -15,7 +15,7 @@
         <div class="contact_form">
         <div class="form_subtitle">Редактирование товара</div>
           
-          <form id="editProductForm" name="editProductForm" href="/product/update" method='post' enctype='multipart/form-data' >
+          <form id="editProductForm" name="editProductForm" action="/product/edit" method='post' enctype='multipart/form-data' >
             
             <div class="form_row">
               <label class="contact"><strong>ID:</strong></label>
@@ -43,8 +43,8 @@
             
             <div class="form_row">
               <select id="categoryId" name="categoryId">
-              {foreach $allMainCategories as $category}
-                  <option value='{$category['id']}' {if $category['id'] == $product['category_id']} selected{/if} >{$category['name']}</option>
+              {foreach $allSubCategories as $category}
+                  <option value='{$category['id']}' {if $category['id'] == $product['category_id']} selected{/if} >{$category['fullName']}</option>
               {/foreach}
               </select>
             </div>
@@ -107,7 +107,7 @@
             </div>
               
             <div class="form_row">
-                <input type="submit" class="register" value="Сохранить" />
+                <input type="submit" id="btnUpdateProduct" name="btnUpdateProduct"  class="register" value="Сохранить" />
             </div>
           </form>
         </div>

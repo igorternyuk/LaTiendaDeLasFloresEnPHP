@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-04-18 10:31:44
+/* Smarty version 3.1.33, created on 2019-04-19 16:11:53
   from '/opt/lampp/htdocs/flower-shop.local/views/default/admin/products/index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cb835f0f307b2_91808610',
+  'unifunc' => 'content_5cb9d7292475b8_00619452',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '74280668968524df1e27501cf6d9253e2467c0c0' => 
     array (
       0 => '/opt/lampp/htdocs/flower-shop.local/views/default/admin/products/index.tpl',
-      1 => 1555576300,
+      1 => 1555683111,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5cb835f0f307b2_91808610 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cb9d7292475b8_00619452 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="center_content">
     <div class="left_content">
         <div class="crumb_nav">
@@ -53,7 +53,8 @@ $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->t
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['product']->value) {
 ?>
-            <tr>
+            <tr id="product_<?php echo $_smarty_tpl->tpl_vars['product']->value['id'];?>
+}">
               <td><?php echo $_smarty_tpl->tpl_vars['product']->value['id'];?>
 </td>
               <td><?php echo $_smarty_tpl->tpl_vars['product']->value['name'];?>
@@ -63,25 +64,25 @@ foreach ($_from as $_smarty_tpl->tpl_vars['product']->value) {
               <td><?php echo $_smarty_tpl->tpl_vars['product']->value['category_fullname'];?>
 </td>
               <td><?php echo $_smarty_tpl->tpl_vars['product']->value['price'];?>
-</td>
+ грн.</td>
               <td>
                   <a id="viewProduct_<?php echo $_smarty_tpl->tpl_vars['product']->value['id'];?>
 " href='/admin/products/view/<?php echo $_smarty_tpl->tpl_vars['product']->value['id'];?>
 '>
-                      Просмореть
+                      Просм.
                   </a>
               </td>
               <td>
                   <a id="editProduct_<?php echo $_smarty_tpl->tpl_vars['product']->value['id'];?>
 " href='/admin/products/edit/<?php echo $_smarty_tpl->tpl_vars['product']->value['id'];?>
 '>
-                      Обновить
+                      Редакт.
                   </a>
               </td>
               <td>
                   <a id="removeProduct_<?php echo $_smarty_tpl->tpl_vars['product']->value['id'];?>
-" href='/admin/products/remove/<?php echo $_smarty_tpl->tpl_vars['product']->value['id'];?>
-'>
+" href='#' onclick="if(confirm('Вы действительно хотите удалить данный товар?')) { removeProduct(<?php echo $_smarty_tpl->tpl_vars['product']->value['id'];?>
+); }; return false; ">
                       Удалить
                   </a>
               </td>

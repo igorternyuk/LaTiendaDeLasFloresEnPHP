@@ -112,6 +112,20 @@ function addProduct(){
     });
 }
 
+function removeProduct(id){
+    let postData = {'id': id};
+    $.ajax({
+        method: 'post',
+        dataType: 'json',
+        data: postData,
+        url: '/product/remove/' + id,
+        success: function(data){
+            $("#product_" + id).hide();
+            alert(data['message']);
+        }
+    });
+}
+
 
 
 

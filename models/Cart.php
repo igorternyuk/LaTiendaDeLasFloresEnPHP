@@ -50,7 +50,7 @@ class Cart {
         $productsInCart = self::getProductIds();
         foreach($productsInCart as $productId => $count){
             $product = Product::getById($productId);
-            $totalSum += $product['price'] * $count; 
+            $totalSum += $product['price'] * (1 - $product['discount'] / 100) * $count; 
         }
         return $totalSum;
     }
@@ -65,7 +65,8 @@ class Cart {
         foreach ($ids as $id => $count){
             $product = Product::getById($id);
             $product['count'] = $count;
-            $product['subtotal'] = $product['price'] * $count;
+            $product['subtotal'] =
+                    $product['price'] * (1 - $product['discount'] / 100);
             $product['image'] = Product::getImage($id);
             array_push($products, $product);
         }

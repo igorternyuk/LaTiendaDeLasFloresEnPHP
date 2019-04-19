@@ -14,7 +14,7 @@
         <span id="errors"></span>
         <div class="contact_form">
           <div class="form_subtitle">Редактирование категории</div>
-          <form id="categoryEditForm" name="categoryEditForm" href="#" method='post'>
+          <form id="categoryEditForm" name="categoryEditForm" action="#" method='post'>
             
             <div class="form_row">
               <label class="contact"><strong>Название:</strong></label>

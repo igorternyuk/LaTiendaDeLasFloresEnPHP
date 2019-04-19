@@ -43,7 +43,7 @@
             {/if}
             {if $currentProduct['discount']}
                 <div class="price">
-                    <strong>Есть скидка</strong>
+                    <strong>Есть скидка {$currentProduct['discount']}%</strong>
                 </div>
             {/if}
             <div class="price">

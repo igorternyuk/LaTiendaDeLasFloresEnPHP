@@ -26,24 +26,24 @@
             <th colspan="3">Дейтсвие</th>
           </tr>
           {foreach $products as $product}
-            <tr>
+            <tr id="product_{$product['id']}}">
               <td>{$product['id']}</td>
               <td>{$product['name']}</td>
               <td>{$product['code']}</td>
               <td>{$product['category_fullname']}</td>
-              <td>{$product['price']}</td>
+              <td>{$product['price']} грн.</td>
               <td>
                   <a id="viewProduct_{$product['id']}" href='/admin/products/view/{$product['id']}'>
-                      Просмореть
+                      Просм.
                   </a>
               </td>
               <td>
                   <a id="editProduct_{$product['id']}" href='/admin/products/edit/{$product['id']}'>
-                      Обновить
+                      Редакт.
                   </a>
               </td>
               <td>
-                  <a id="removeProduct_{$product['id']}" href='/admin/products/remove/{$product['id']}'>
+                  <a id="removeProduct_{$product['id']}" href='#' onclick="if(confirm('Вы действительно хотите удалить данный товар?')) { removeProduct({$product['id']}); }; return false; ">
                       Удалить
                   </a>
               </td>

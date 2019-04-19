@@ -32,6 +32,8 @@ class AdminBaseController {
             }
         }
         $this->loadProductsWithDiscount();
+        $aboutShopInfo = Blog::getById(1);
+        $this->smarty->assign('aboutShopInfo', $aboutShopInfo);
     }
     
     protected function loadAllCategories(){
@@ -45,6 +47,9 @@ class AdminBaseController {
                 }
             }
             $category['count'] = Product::countByCategoryId($category['id']);
+        }
+        foreach($allSubCategories as &$category){
+            $category['fullName'] = Category::getFullName($category['id']);
         }
         $this->smarty->assign('allCategories', $allCategories);
         $this->smarty->assign('allMainCategories', $allMainCategories);

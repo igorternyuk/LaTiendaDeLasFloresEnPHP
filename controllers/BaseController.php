@@ -25,6 +25,8 @@ class BaseController {
                 $this->smarty->assign('adminLogged', true);
             }
         }
+        $aboutShopInfo = Blog::getById(1);
+        $this->smarty->assign('aboutShopInfo', $aboutShopInfo);
     }
     
     protected function loadCartInfo(){

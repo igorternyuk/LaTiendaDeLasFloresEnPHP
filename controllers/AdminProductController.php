@@ -29,7 +29,7 @@ class AdminProductController extends AdminBaseController{
         //Utils::debug(['filter' => $filter, 'products' => $products]);
         $itemsTotal = Product::countAll($filter);
         $paginator = new Paginator($page, $itemsTotal,
-                Order::SHOW_BY_DEFAULT, 'page-');
+                Product::SHOW_BY_DEFAULT, 'page-');
         $pagination = $paginator->getHtml();
         $this->smarty->assign('products', $products);
         $this->smarty->assign('pageTitle', 'Листинг товаров');
@@ -59,7 +59,7 @@ class AdminProductController extends AdminBaseController{
         parent::loadCommon();
         $product = Product::getById($productId);
         $product['image'] = Product::getImage($product['id']);
-        $this->smarty->assign('pageTitle', 'Прсмотр данных о товаре');
+        $this->smarty->assign('pageTitle', 'Просмотр данных о товаре');
         $this->smarty->assign('adminPageActive', true);
         $this->smarty->assign('product', $product);
         Utils::loadTemplate($this->smarty, 'layouts/adminHeader');
@@ -74,7 +74,8 @@ class AdminProductController extends AdminBaseController{
         parent::loadCommon();
         $product = Product::getById($productId);
         $product['image'] = Product::getImage($product['id']);
-        $this->smarty->assign('pageTitle', 'Прсмотр данных о товаре');
+        $product['categoryFullName'] = Category::getFullName($product['category_id']);
+        $this->smarty->assign('pageTitle', 'Просмотр данных о товаре');
         $this->smarty->assign('adminPageActive', true);
         $this->smarty->assign('product', $product);
         Utils::loadTemplate($this->smarty, 'layouts/adminHeader');

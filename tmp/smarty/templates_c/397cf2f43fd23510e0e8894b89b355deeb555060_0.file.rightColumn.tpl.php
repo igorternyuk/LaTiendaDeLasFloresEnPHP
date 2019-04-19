@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-04-13 14:43:54
+/* Smarty version 3.1.33, created on 2019-04-19 16:35:28
   from '/opt/lampp/htdocs/flower-shop.local/views/default/rightColumn.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cb1d98a7890f1_74308338',
+  'unifunc' => 'content_5cb9dcb1007278_71918398',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '397cf2f43fd23510e0e8894b89b355deeb555060' => 
     array (
       0 => '/opt/lampp/htdocs/flower-shop.local/views/default/rightColumn.tpl',
-      1 => 1555159431,
+      1 => 1555684460,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5cb1d98a7890f1_74308338 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cb9dcb1007278_71918398 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="right_content">
         <div class="cart">
             <div class="title">
@@ -39,7 +39,10 @@ images/cart.gif" alt="" />
 images/bullet3.gif" alt="" /></span>О нашем магазине</div>
       <div class="about">
         <p> <img src="<?php echo $_smarty_tpl->tpl_vars['templateWebPath']->value;?>
-images/about.gif" alt="" class="right" /> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud. </p>
+images/about.gif" alt="" class="right" />
+            <span style='font-size: 16px'><?php echo $_smarty_tpl->tpl_vars['aboutShopInfo']->value['content'];?>
+</span>
+        </p>
       </div>
       <div class="right_box">
         <div class="title">

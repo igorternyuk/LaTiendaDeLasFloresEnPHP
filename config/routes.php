@@ -1,8 +1,10 @@
 <?php
 
 return [
+    'about' => 'blog/about',
+    'contacts' => 'blog/contacts',
     'product/add' => 'product/add',
-    'product/update' => 'product/update',
+    'product/edit' => 'product/update',
     'product/remove' => 'product/remove',
     'admin/products/search/page-([0-9]+)' => 'adminProduct/index/$1/true',
     'admin/products/page-([0-9]+)' => 'adminProduct/index/$1',

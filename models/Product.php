@@ -88,14 +88,14 @@ class Product {
     }
     
     public static function update($params){
-        $sql = "UPDATE `order` SET `name` = :name, `category_id` = :category_id,"
-                . " `code` = :code, `price` = :price, `stock` = :stock, "
-                . " `is_new` = :is_new, `discount` = :discount`,"
-                . " short_description` = :short_description,"
+        $sql = "UPDATE `product` SET `name` = :name, `category_id` = :category_id,"
+                . " `code` = :code, `price` = :price, `brand` = :brand,"
+                . " `stock` = :stock, `is_new` = :is_new,"
+                . " `discount` = :discount,"
+                . " `short_description` = :short_description,"
                 . " `description` = :description,"
-                . " `is_recommended` = :is_recommended"
-                . " `available` = :available, `image_small` = :image_small,"
-                . " `image_big` = :image_big,"
+                . " `is_recommended` = :is_recommended,"
+                . " `available` = :available"
                 . " WHERE `id` = :id LIMIT 1";
         $options = [
             [
@@ -124,6 +124,11 @@ class Product {
                 'type' => PDO::PARAM_INT
             ],
             [
+                'placeholder' => ':brand',
+                'value' => $params['brand'],
+                'type' => PDO::PARAM_STR
+            ],
+            [
                 'placeholder' => ':stock',
                 'value' => $params['stock'],
                 'type' => PDO::PARAM_INT
@@ -147,8 +152,7 @@ class Product {
                 'placeholder' => ':description',
                 'value' => $params['description'],
                 'type' => PDO::PARAM_STR
-            ],
-            
+            ],            
             [
                 'placeholder' => ':is_recommended',
                 'value' => $params['is_recommended'],
@@ -158,18 +162,9 @@ class Product {
                 'placeholder' => ':available',
                 'value' => $params['available'],
                 'type' => PDO::PARAM_INT
-            ],
-            [
-                'placeholder' => ':image_small',
-                'value' => $params['image'],
-                'type' => PDO::PARAM_STR
-            ],
-            [
-                'placeholder' => ':image_big',
-                'value' => $params['image'],
-                'type' => PDO::PARAM_STR
             ]
         ];
+        //Utils::debug($options);
         return Db::executeUpdate($sql, $options);
     }
     
@@ -195,6 +190,18 @@ class Product {
             ]
         ];
         return Db::executeUpdate($sql, $options);
+    }
+    
+    public function removeById($productId){
+        $sql = "DELETE FROM `product` WHERE `id` = :id LIMIT 1";
+        $params = [
+            [
+                'placeholder' => ':id',
+                'value' => $productId,
+                'type' => PDO::PARAM_INT
+            ]
+        ];
+        return Db::executeUpdate($sql, $params);
     }
     
     public static function getById($productId){
@@ -339,7 +346,7 @@ class Product {
                         'type' => PDO::PARAM_STR
                     ]);
         }
-        $sql .= " ORDER BY `id` LIMIT :limit OFFSET :offset ";
+        $sql .= " ORDER BY `id` DESC LIMIT :limit OFFSET :offset ";
         return Db::executeSelection($sql, $params);        
     }
     

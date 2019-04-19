@@ -34,8 +34,8 @@
             <div class="form_row">
               <label class="contact"><strong>Категория:</strong></label>
               <select id="categoryId" name="categoryId">
-              {foreach $allMainCategories as $category}
-                  <option value='{$category['id']}' >{$category['name']}</option>
+              {foreach $allSubCategories as $category}
+                  <option value='{$category['id']}' >{$category['fullName']}</option>
               {/foreach}
               </select>
             </div>

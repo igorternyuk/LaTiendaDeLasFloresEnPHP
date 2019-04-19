@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-04-19 08:15:11
+/* Smarty version 3.1.33, created on 2019-04-19 15:24:58
   from '/opt/lampp/htdocs/flower-shop.local/views/default/admin/products/edit.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cb9676fd8fa04_78347251',
+  'unifunc' => 'content_5cb9cc2a116a87_79937608',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2ff493b9f8440d832646126a56bff8e1028eb8be' => 
     array (
       0 => '/opt/lampp/htdocs/flower-shop.local/views/default/admin/products/edit.tpl',
-      1 => 1555580649,
+      1 => 1555679812,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5cb9676fd8fa04_78347251 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cb9cc2a116a87_79937608 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="center_content">
     <div class="left_content">
         <div class="crumb_nav">
@@ -38,7 +38,7 @@ function content_5cb9676fd8fa04_78347251 (Smarty_Internal_Template $_smarty_tpl)
         <div class="contact_form">
         <div class="form_subtitle">Редактирование товара</div>
           
-          <form id="editProductForm" name="editProductForm" href="/product/update" method='post' enctype='multipart/form-data' >
+          <form id="editProductForm" name="editProductForm" action="/product/edit" method='post' enctype='multipart/form-data' >
             
             <div class="form_row">
               <label class="contact"><strong>ID:</strong></label>
@@ -71,12 +71,12 @@ function content_5cb9676fd8fa04_78347251 (Smarty_Internal_Template $_smarty_tpl)
             <div class="form_row">
               <select id="categoryId" name="categoryId">
               <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['allMainCategories']->value, 'category');
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['allSubCategories']->value, 'category');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['category']->value) {
 ?>
                   <option value='<?php echo $_smarty_tpl->tpl_vars['category']->value['id'];?>
-' <?php if ($_smarty_tpl->tpl_vars['category']->value['id'] == $_smarty_tpl->tpl_vars['product']->value['category_id']) {?> selected<?php }?> ><?php echo $_smarty_tpl->tpl_vars['category']->value['name'];?>
+' <?php if ($_smarty_tpl->tpl_vars['category']->value['id'] == $_smarty_tpl->tpl_vars['product']->value['category_id']) {?> selected<?php }?> ><?php echo $_smarty_tpl->tpl_vars['category']->value['fullName'];?>
 </option>
               <?php
 }
@@ -149,7 +149,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             </div>
               
             <div class="form_row">
-                <input type="submit" class="register" value="Сохранить" />
+                <input type="submit" id="btnUpdateProduct" name="btnUpdateProduct"  class="register" value="Сохранить" />
             </div>
           </form>
         </div>

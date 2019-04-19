@@ -157,7 +157,7 @@ class Order {
         if($res){
             return $res[0];
         }
-        return 0;
+        return false;
     }
     
     public static function countByUserId($userId){

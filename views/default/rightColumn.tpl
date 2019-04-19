@@ -11,7 +11,9 @@
         
       <div class="title"><span class="title_icon"><img src="{$templateWebPath}images/bullet3.gif" alt="" /></span>О нашем магазине</div>
       <div class="about">
-        <p> <img src="{$templateWebPath}images/about.gif" alt="" class="right" /> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud. </p>
+        <p> <img src="{$templateWebPath}images/about.gif" alt="" class="right" />
+            <span style='font-size: 16px'>{$aboutShopInfo['content']}</span>
+        </p>
       </div>
       <div class="right_box">
         <div class="title">
