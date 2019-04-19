@@ -8,11 +8,11 @@
       </div>
         
       <div class="feat_prod_box_details">
-        <a href='/admin/category/page-1'>Управление категориями</a>
+        <a href='/admin/categories'>Управление категориями</a>
         <br />
-        <a href='/admin/product/page-1'>Управление товарами</a>
+        <a href='/admin/products'>Управление товарами</a>
         <br />
-        <a href='/admin/order/page-1'>Управление заказами</a>  
+        <a href='/admin/orders'>Управление заказами</a>  
       </div>
       <div class="clear"></div>
     </div>

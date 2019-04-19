@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-04-17 16:10:19
+/* Smarty version 3.1.33, created on 2019-04-18 08:50:26
   from '/opt/lampp/htdocs/flower-shop.local/views/default/admin/categories/index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cb733cb53a529_57720238',
+  'unifunc' => 'content_5cb81e325618e4_68704810',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '98a186ed32b124f5eef7c43ef35eb224039fe0f0' => 
     array (
       0 => '/opt/lampp/htdocs/flower-shop.local/views/default/admin/categories/index.tpl',
-      1 => 1555510216,
+      1 => 1555569926,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5cb733cb53a529_57720238 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cb81e325618e4_68704810 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="center_content">
     <div class="left_content">
         <div class="crumb_nav">
@@ -60,7 +60,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['category']->value) {
  <?php } else { ?> - <?php }?> </td>
               <td><?php if ($_smarty_tpl->tpl_vars['category']->value['status']) {?> Активна <?php } else { ?> Скрыта <?php }?></td>
               <td>
-                  <a href="/admin/category/edit/<?php echo $_smarty_tpl->tpl_vars['category']->value['id'];?>
+                  <a href="/admin/categories/edit/<?php echo $_smarty_tpl->tpl_vars['category']->value['id'];?>
 ">
                       Редактировать
                   </a>
@@ -79,7 +79,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         </table>
           <?php echo $_smarty_tpl->tpl_vars['pagination']->value;?>
 
-          <a href="/admin/category/create" class="checkout" >
+          <a href="/admin/categories/create" class="checkout" >
               Создать &gt;
           </a>
         <?php } else { ?>

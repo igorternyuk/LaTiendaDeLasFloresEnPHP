@@ -1,5 +1,11 @@
 <div class="center_content">
     <div class="left_content">
+        <div class="crumb_nav">
+            <a href="/">На главную</a> &gt;&gt;
+            <a href="/admin">Админка</a> &gt;&gt;
+            <a href="/admin/categories/page-1">Управление категориями</a> &gt;&gt;
+            Редактирование категории
+        </div>
       <div class="title"><span class="title_icon">
               <img src="images/bullet1.gif" alt="" />
           </span>Редактирование категории</div>

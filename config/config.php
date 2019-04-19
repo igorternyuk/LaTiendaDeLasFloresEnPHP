@@ -7,6 +7,8 @@ define('TemplatePostfix', ".tpl");
 define('TemplateWebPath',"/templates/{$template}/");
 define('ROOT', $_SERVER['DOCUMENT_ROOT']);
 define('PathToProductImages', "/upload/images/product/");
+define('MaxImageFileSize', 10 * 1024 * 1024);
+define('ImageExtensions', ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'tiff']);
 define('NoImage', "no-image.jpg");
 define('OrderStatus',
         [

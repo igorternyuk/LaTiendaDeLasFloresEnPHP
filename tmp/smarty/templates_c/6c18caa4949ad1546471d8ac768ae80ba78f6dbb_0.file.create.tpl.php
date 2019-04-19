@@ -1,4 +1,27 @@
-<div class="center_content">
+<?php
+/* Smarty version 3.1.33, created on 2019-04-18 19:01:59
+  from '/opt/lampp/htdocs/flower-shop.local/views/default/admin/products/create.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.33',
+  'unifunc' => 'content_5cb8ad87d7de04_35509117',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '6c18caa4949ad1546471d8ac768ae80ba78f6dbb' => 
+    array (
+      0 => '/opt/lampp/htdocs/flower-shop.local/views/default/admin/products/create.tpl',
+      1 => 1555606839,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5cb8ad87d7de04_35509117 (Smarty_Internal_Template $_smarty_tpl) {
+?><div class="center_content">
     <div class="left_content">
         <div class="crumb_nav">
             <a href="/">На главную</a> &gt;&gt;
@@ -34,9 +57,18 @@
             <div class="form_row">
               <label class="contact"><strong>Категория:</strong></label>
               <select id="categoryId" name="categoryId">
-              {foreach $allMainCategories as $category}
-                  <option value='{$category['id']}' >{$category['name']}</option>
-              {/foreach}
+              <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['allMainCategories']->value, 'category');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['category']->value) {
+?>
+                  <option value='<?php echo $_smarty_tpl->tpl_vars['category']->value['id'];?>
+' ><?php echo $_smarty_tpl->tpl_vars['category']->value['name'];?>
+</option>
+              <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
               </select>
             </div>
               
@@ -98,4 +130,5 @@
         </div>
       </div>
       <div class="clear"></div>
-    </div>
+    </div><?php }
+}

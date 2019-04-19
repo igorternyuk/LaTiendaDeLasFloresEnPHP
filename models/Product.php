@@ -7,7 +7,195 @@
  */
 class Product {
     
-    const SHOW_BY_DEFAULT = 3;
+    const SHOW_BY_DEFAULT = 6;
+    
+    public static function addNew($params){
+      $sql = "INSERT INTO `product` (`category_id`, `name`, `code`, `price`,"
+              . " `brand`, `stock`, `is_new`, `discount`,`short_description`,"
+              . " `description`, `is_recommended`, `available`)"
+              . " VALUES(:category_id, :name, :code, :price, :brand, :stock, :is_new,"
+                . ":discount, :short_description, :description, :is_recommended,"
+              . " :available)";
+        $options = [            
+            [
+                'placeholder' => ':category_id',
+                'value' => $params['category_id'],
+                'type' => PDO::PARAM_INT
+            ],
+            [
+                'placeholder' => ':name',
+                'value' => $params['name'],
+                'type' => PDO::PARAM_STR
+            ],
+            [
+                'placeholder' => ':code',
+                'value' => $params['code'],
+                'type' => PDO::PARAM_STR
+            ],
+            [
+                'placeholder' => ':price',
+                'value' => $params['price'],
+                'type' => PDO::PARAM_INT
+            ],
+            [
+                'placeholder' => ':brand',
+                'value' => $params['brand'],
+                'type' => PDO::PARAM_STR
+            ],
+            [
+                'placeholder' => ':stock',
+                'value' => $params['stock'],
+                'type' => PDO::PARAM_INT
+            ],
+            [
+                'placeholder' => ':is_new',
+                'value' => $params['is_new'],
+                'type' => PDO::PARAM_INT
+            ],
+            [
+                'placeholder' => ':discount',
+                'value' => $params['discount'],
+                'type' => PDO::PARAM_INT
+            ],
+            [
+                'placeholder' => ':short_description',
+                'value' => $params['short_description'],
+                'type' => PDO::PARAM_STR
+            ],
+            [
+                'placeholder' => ':description',
+                'value' => $params['description'],
+                'type' => PDO::PARAM_STR
+            ],
+            
+            [
+                'placeholder' => ':is_recommended',
+                'value' => $params['is_recommended'],
+                'type' => PDO::PARAM_INT
+            ],
+            [
+                'placeholder' => ':available',
+                'value' => $params['available'],
+                'type' => PDO::PARAM_INT
+            ]
+        ];
+        
+        $res = Db::executeUpdate($sql, $options);
+        if($res){
+            return Db::getLastInsertId();
+        }
+        return false;
+    }
+    
+    public static function update($params){
+        $sql = "UPDATE `order` SET `name` = :name, `category_id` = :category_id,"
+                . " `code` = :code, `price` = :price, `stock` = :stock, "
+                . " `is_new` = :is_new, `discount` = :discount`,"
+                . " short_description` = :short_description,"
+                . " `description` = :description,"
+                . " `is_recommended` = :is_recommended"
+                . " `available` = :available, `image_small` = :image_small,"
+                . " `image_big` = :image_big,"
+                . " WHERE `id` = :id LIMIT 1";
+        $options = [
+            [
+                'placeholder' => ':id',
+                'value' => $params['id'],
+                'type' => PDO::PARAM_INT
+            ],
+            [
+                'placeholder' => ':category_id',
+                'value' => $params['category_id'],
+                'type' => PDO::PARAM_INT
+            ],
+            [
+                'placeholder' => ':name',
+                'value' => $params['name'],
+                'type' => PDO::PARAM_STR
+            ],
+            [
+                'placeholder' => ':code',
+                'value' => $params['code'],
+                'type' => PDO::PARAM_STR
+            ],
+            [
+                'placeholder' => ':price',
+                'value' => $params['price'],
+                'type' => PDO::PARAM_INT
+            ],
+            [
+                'placeholder' => ':stock',
+                'value' => $params['stock'],
+                'type' => PDO::PARAM_INT
+            ],
+            [
+                'placeholder' => ':is_new',
+                'value' => $params['is_new'],
+                'type' => PDO::PARAM_INT
+            ],
+            [
+                'placeholder' => ':discount',
+                'value' => $params['discount'],
+                'type' => PDO::PARAM_INT
+            ],
+            [
+                'placeholder' => ':short_description',
+                'value' => $params['short_description'],
+                'type' => PDO::PARAM_STR
+            ],
+            [
+                'placeholder' => ':description',
+                'value' => $params['description'],
+                'type' => PDO::PARAM_STR
+            ],
+            
+            [
+                'placeholder' => ':is_recommended',
+                'value' => $params['is_recommended'],
+                'type' => PDO::PARAM_INT
+            ],
+            [
+                'placeholder' => ':available',
+                'value' => $params['available'],
+                'type' => PDO::PARAM_INT
+            ],
+            [
+                'placeholder' => ':image_small',
+                'value' => $params['image'],
+                'type' => PDO::PARAM_STR
+            ],
+            [
+                'placeholder' => ':image_big',
+                'value' => $params['image'],
+                'type' => PDO::PARAM_STR
+            ]
+        ];
+        return Db::executeUpdate($sql, $options);
+    }
+    
+    public static function updateImage($productId, $image){
+        $sql = "UPDATE `product` SET `image_small` = :image_small,"
+                . " `image_big` = :image_big "
+                . " WHERE `id` = :id LIMIT 1";
+        $options = [
+            [
+                'placeholder' => ':id',
+                'value' => $productId,
+                'type' => PDO::PARAM_INT
+            ],            
+            [
+                'placeholder' => ':image_small',
+                'value' => $image,
+                'type' => PDO::PARAM_STR
+            ],
+            [
+                'placeholder' => ':image_big',
+                'value' => $image,
+                'type' => PDO::PARAM_STR
+            ]
+        ];
+        return Db::executeUpdate($sql, $options);
+    }
     
     public static function getById($productId){
         $sql = "SELECT * FROM `product` WHERE `id` = :id LIMIT 1";

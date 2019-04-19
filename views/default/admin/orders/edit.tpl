@@ -3,7 +3,7 @@
         <div class="crumb_nav">
             <a href="/">На главную</a> &gt;&gt;
             <a href="/admin">Админка</a> &gt;&gt;
-            <a href="/admin/order/page-1">Управление заказами</a> &gt;&gt;
+            <a href="/admin/orders/page-1">Управление заказами</a> &gt;&gt;
             Редактирование заказа
         </div>
       <div class="title"><span class="title_icon">

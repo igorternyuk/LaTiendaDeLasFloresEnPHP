@@ -30,12 +30,12 @@
               <td>{$order['username']}</td>
               <td>{$order['status_description']}</td>
               <td>
-                  <a id="viewOrder_{$order['id']}" href='/admin/order/view/{$order['id']}'>
+                  <a id="viewOrder_{$order['id']}" href='/admin/orders/view/{$order['id']}'>
                       Просмореть
                   </a>
               </td>
               <td>
-                  <a id="viewOrder_{$order['id']}" href='/admin/order/update/{$order['id']}'>
+                  <a id="viewOrder_{$order['id']}" href='/admin/orders/update/{$order['id']}'>
                       Обновить
                   </a>
               </td>

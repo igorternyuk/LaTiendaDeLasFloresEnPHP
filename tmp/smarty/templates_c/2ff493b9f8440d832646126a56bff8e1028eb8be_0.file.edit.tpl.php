@@ -1,4 +1,27 @@
-<div class="center_content">
+<?php
+/* Smarty version 3.1.33, created on 2019-04-19 08:15:11
+  from '/opt/lampp/htdocs/flower-shop.local/views/default/admin/products/edit.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.33',
+  'unifunc' => 'content_5cb9676fd8fa04_78347251',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '2ff493b9f8440d832646126a56bff8e1028eb8be' => 
+    array (
+      0 => '/opt/lampp/htdocs/flower-shop.local/views/default/admin/products/edit.tpl',
+      1 => 1555580649,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5cb9676fd8fa04_78347251 (Smarty_Internal_Template $_smarty_tpl) {
+?><div class="center_content">
     <div class="left_content">
         <div class="crumb_nav">
             <a href="/">На главную</a> &gt;&gt;
@@ -19,22 +42,26 @@
             
             <div class="form_row">
               <label class="contact"><strong>ID:</strong></label>
-              <input type="text" id="productId" name="productId" class="contact_input" value="{$product['id']}" readonly/>
+              <input type="text" id="productId" name="productId" class="contact_input" value="<?php echo $_smarty_tpl->tpl_vars['product']->value['id'];?>
+" readonly/>
             </div>
             
             <div class="form_row">
               <label class="contact"><strong>Название:</strong></label>
-              <input type="text" id="name" name="name" class="contact_input" value="{$product['name']}" required/>
+              <input type="text" id="name" name="name" class="contact_input" value="<?php echo $_smarty_tpl->tpl_vars['product']->value['name'];?>
+" required/>
             </div>
               
             <div class="form_row">
               <label class="contact"><strong>Бренд:</strong></label>
-              <input type="text" id="brand" name="brand" class="contact_input" value="{$product['brand']}" required/>
+              <input type="text" id="brand" name="brand" class="contact_input" value="<?php echo $_smarty_tpl->tpl_vars['product']->value['brand'];?>
+" required/>
             </div>
               
             <div class="form_row">
               <label class="contact"><strong>Код:</strong></label>
-              <input type="text" id="code" name="code" class="contact_input"  value="{$product['code']}" required/>
+              <input type="text" id="code" name="code" class="contact_input"  value="<?php echo $_smarty_tpl->tpl_vars['product']->value['code'];?>
+" required/>
             </div>
             
             <div class="form_row">
@@ -43,54 +70,68 @@
             
             <div class="form_row">
               <select id="categoryId" name="categoryId">
-              {foreach $allMainCategories as $category}
-                  <option value='{$category['id']}' {if $category['id'] == $product['category_id']} selected{/if} >{$category['name']}</option>
-              {/foreach}
+              <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['allMainCategories']->value, 'category');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['category']->value) {
+?>
+                  <option value='<?php echo $_smarty_tpl->tpl_vars['category']->value['id'];?>
+' <?php if ($_smarty_tpl->tpl_vars['category']->value['id'] == $_smarty_tpl->tpl_vars['product']->value['category_id']) {?> selected<?php }?> ><?php echo $_smarty_tpl->tpl_vars['category']->value['name'];?>
+</option>
+              <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
               </select>
             </div>
               
             <div class="form_row">
               <label class="contact"><strong>Цена:</strong></label>
-              <input type="number" min='0' id="price" name="price" class="contact_input" value="{$product['price']}" required/>
+              <input type="number" min='0' id="price" name="price" class="contact_input" value="<?php echo $_smarty_tpl->tpl_vars['product']->value['price'];?>
+" required/>
             </div>
               
             <div class="form_row">
               <label class="contact"><strong>Скидка:</strong></label>
-              <input type="number" min='0' id="discount" name="discount" class="contact_input" value="{$product['discount']}" required/>
+              <input type="number" min='0' id="discount" name="discount" class="contact_input" value="<?php echo $_smarty_tpl->tpl_vars['product']->value['discount'];?>
+" required/>
             </div>
               
             <div class="form_row">
               <label class="contact"><strong>Запас:</strong></label>
-              <input type="number" min='0' id="stock" name="stock" class="contact_input" value="{$product['stock']}" required/>
+              <input type="number" min='0' id="stock" name="stock" class="contact_input" value="<?php echo $_smarty_tpl->tpl_vars['product']->value['stock'];?>
+" required/>
             </div>
               
             <div class="form_row">
               <label class="contact"><strong>Короткое описание:</strong></label>
-              <textarea id="short_description" name="short_description" class="contact_textarea" >{$product['short_description']}</textarea>
+              <textarea id="short_description" name="short_description" class="contact_textarea" ><?php echo $_smarty_tpl->tpl_vars['product']->value['short_description'];?>
+</textarea>
             </div>
               
             <div class="form_row">
               <label class="contact"><strong>Подробное описание:</strong></label>
-              <textarea id="description" name="description" class="contact_textarea" >{$product['description']}</textarea>
+              <textarea id="description" name="description" class="contact_textarea" ><?php echo $_smarty_tpl->tpl_vars['product']->value['description'];?>
+</textarea>
             </div>
               
             <div class="form_row">
               <div class="terms">
-                <input type="checkbox" id="isNew" name="isNew" {if $product['is_new']}checked{/if}/>
+                <input type="checkbox" id="isNew" name="isNew" <?php if ($_smarty_tpl->tpl_vars['product']->value['is_new']) {?>checked<?php }?>/>
                 Новинка
               </div>
             </div>
             
             <div class="form_row">
               <div class="terms">
-                <input type="checkbox" id="isRecommended" name="isRecommended" {if $product['is_recommended']}checked{/if}/>
+                <input type="checkbox" id="isRecommended" name="isRecommended" <?php if ($_smarty_tpl->tpl_vars['product']->value['is_recommended']) {?>checked<?php }?>/>
                 Рекомендуемый
               </div>
             </div>
               
             <div class="form_row">
               <div class="terms">
-                <input type="checkbox" id="isAvailable" name="isAvailable" {if $product['available']}checked{/if}/>
+                <input type="checkbox" id="isAvailable" name="isAvailable" <?php if ($_smarty_tpl->tpl_vars['product']->value['available']) {?>checked<?php }?>/>
                 Отображать
               </div>
             </div> 
@@ -102,7 +143,8 @@
                 
             <div class="form_row">
               <div class="terms">
-                <img src="{$product['image']}" width='200' alt="" border="0" />
+                <img src="<?php echo $_smarty_tpl->tpl_vars['product']->value['image'];?>
+" width='200' alt="" border="0" />
               </div>
             </div>
               
@@ -113,4 +155,5 @@
         </div>
       </div>
       <div class="clear"></div>
-    </div>
+    </div><?php }
+}

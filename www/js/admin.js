@@ -17,12 +17,6 @@ function clearForm(objForm){
     });
 }
 
-/*
-    'admin/category/add' => 'adminCategory/add',
-    'admin/category/edit/([0-9]+)' => 'adminCategory/update/$1',
-    'admin/category/remove/([0-9]+)' => 'adminCategory/remove/$1',
-*/
-
 function addCategory(){
     let postData = getData("#addCategoryForm");
     console.log(postData);
@@ -34,8 +28,8 @@ function addCategory(){
         success: function(data){
             alert(data['message']);
             if(data['success']){
-                clearForm("#addCategoryForm");
-                document.location = '/admin/category/page-1';
+                clearForm("#addCategoriesForm");
+                document.location = '/admin/categories/page-1';
             } 
         }
     });
@@ -53,7 +47,7 @@ function editCategory(id){
             alert(data['message']);
             if(data['success']){
                 clearForm("#editCategoryForm");
-                document.location = '/admin/category/page-1';
+                document.location = '/admin/categories/page-1';
             } 
         }
     });
@@ -69,7 +63,7 @@ function removeCategory(id){
         success: function(data){
             alert(data['message']);
             if(data['success']){
-                document.location = '/admin/category/page-1';
+                document.location = '/admin/categories/page-1';
             } 
         }
     });
@@ -86,7 +80,33 @@ function updateOrder(id){
             alert(data['message']);
             if(data['success']){
                 clearForm("#orderEditForm");
-                document.location = '/admin/order/page-1';
+                document.location = '/admin/orders/page-1';
+            } 
+        }
+    });
+}
+
+function addProduct(){
+    let postData = getData("#addProductForm");
+    console.log(postData);
+    let datos = new FormData($("#addProductForm"));
+    $.ajax({
+        method: 'post',
+        dataType: 'json',
+        data: postData,
+        url: '/product/add',
+        success: function(data){
+            alert(data['message']);
+            if(data['success']){
+                clearForm("#addProductForm");
+                document.location = '/admin/products/page-1';
+            } else {
+                errors = data['errors'];
+                let errorHtml = "<h3>Ошибка:</h3>";
+                for(let i = 0; i < errors.length; ++i){
+                    errorHtml += "<p>" + (i + 1) + ") <span style='color:red;' >" + errors[i] + "</span></p><br />";
+                }
+                $("#errors").html(errorHtml);
             } 
         }
     });

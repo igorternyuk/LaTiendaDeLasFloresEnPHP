@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-04-17 17:43:25
+/* Smarty version 3.1.33, created on 2019-04-18 08:52:06
   from '/opt/lampp/htdocs/flower-shop.local/views/default/admin/orders/index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cb7499d467cf7_42904358',
+  'unifunc' => 'content_5cb81e963f1fa3_61838786',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9bf9dadac49b164771115e5e3313b40b6edacafb' => 
     array (
       0 => '/opt/lampp/htdocs/flower-shop.local/views/default/admin/orders/index.tpl',
-      1 => 1555513363,
+      1 => 1555570319,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5cb7499d467cf7_42904358 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cb81e963f1fa3_61838786 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="center_content">
     <div class="left_content">
         <div class="crumb_nav">
@@ -63,14 +63,14 @@ foreach ($_from as $_smarty_tpl->tpl_vars['order']->value) {
 </td>
               <td>
                   <a id="viewOrder_<?php echo $_smarty_tpl->tpl_vars['order']->value['id'];?>
-" href='/admin/order/view/<?php echo $_smarty_tpl->tpl_vars['order']->value['id'];?>
+" href='/admin/orders/view/<?php echo $_smarty_tpl->tpl_vars['order']->value['id'];?>
 '>
                       Просмореть
                   </a>
               </td>
               <td>
                   <a id="viewOrder_<?php echo $_smarty_tpl->tpl_vars['order']->value['id'];?>
-" href='/admin/order/update/<?php echo $_smarty_tpl->tpl_vars['order']->value['id'];?>
+" href='/admin/orders/update/<?php echo $_smarty_tpl->tpl_vars['order']->value['id'];?>
 '>
                       Обновить
                   </a>

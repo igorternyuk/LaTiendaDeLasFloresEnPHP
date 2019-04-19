@@ -421,7 +421,7 @@ color: #333333;
 }
 input.contact_input{
 width:253px;
-height:18px;
+height:23px;
 background-color:#fff;
 color:#999999;
 border:1px #DFDFDF solid;
@@ -484,7 +484,7 @@ line-height:25px;
 color:#fff;
 }
 .terms{
-padding:0 0 0 80px;
+padding:0 0 0 5px;
 }
 .form_subtitle{
 position:absolute;

@@ -29,7 +29,7 @@
               <td>{if isset($category['parent_name']) and $category['parent_name']} {$category['parent_name']} {else} - {/if} </td>
               <td>{if $category['status'] } Активна {else} Скрыта {/if}</td>
               <td>
-                  <a href="/admin/category/edit/{$category['id']}">
+                  <a href="/admin/categories/edit/{$category['id']}">
                       Редактировать
                   </a>
               </td>              
@@ -42,7 +42,7 @@
           {/foreach}
         </table>
           {$pagination}
-          <a href="/admin/category/create" class="checkout" >
+          <a href="/admin/categories/create" class="checkout" >
               Создать &gt;
           </a>
         {else}

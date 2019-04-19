@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-04-17 18:51:45
+/* Smarty version 3.1.33, created on 2019-04-18 08:52:12
   from '/opt/lampp/htdocs/flower-shop.local/views/default/admin/orders/edit.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cb759a10cd6b0_93331903',
+  'unifunc' => 'content_5cb81e9c928606_60321887',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '407da54194c927ac1a78f9c1b64c0bc80592adbe' => 
     array (
       0 => '/opt/lampp/htdocs/flower-shop.local/views/default/admin/orders/edit.tpl',
-      1 => 1555519824,
+      1 => 1555570071,
       2 => 'file',
     ),
   ),
@@ -20,13 +20,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5cb759a10cd6b0_93331903 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cb81e9c928606_60321887 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="center_content">
     <div class="left_content">
         <div class="crumb_nav">
             <a href="/">На главную</a> &gt;&gt;
             <a href="/admin">Админка</a> &gt;&gt;
-            <a href="/admin/order/page-1">Управление заказами</a> &gt;&gt;
+            <a href="/admin/orders/page-1">Управление заказами</a> &gt;&gt;
             Редактирование заказа
         </div>
       <div class="title"><span class="title_icon">

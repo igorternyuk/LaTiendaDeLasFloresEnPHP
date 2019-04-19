@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-04-17 15:59:30
+/* Smarty version 3.1.33, created on 2019-04-18 08:52:29
   from '/opt/lampp/htdocs/flower-shop.local/views/default/admin/categories/edit.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cb73142c17438_90945880',
+  'unifunc' => 'content_5cb81eadcd9dc3_49477044',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c9e91305f39fb6e5fb9a65cf931d91f46acbcbf8' => 
     array (
       0 => '/opt/lampp/htdocs/flower-shop.local/views/default/admin/categories/edit.tpl',
-      1 => 1555509486,
+      1 => 1555570064,
       2 => 'file',
     ),
   ),
@@ -20,9 +20,15 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5cb73142c17438_90945880 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cb81eadcd9dc3_49477044 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="center_content">
     <div class="left_content">
+        <div class="crumb_nav">
+            <a href="/">На главную</a> &gt;&gt;
+            <a href="/admin">Админка</a> &gt;&gt;
+            <a href="/admin/categories/page-1">Управление категориями</a> &gt;&gt;
+            Редактирование категории
+        </div>
       <div class="title"><span class="title_icon">
               <img src="images/bullet1.gif" alt="" />
           </span>Редактирование категории</div>
